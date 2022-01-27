@@ -10,7 +10,7 @@ import ProductShippingSetting from "Components/ProductShippingSetting";
 
 function ProductRegister() {
   return (
-    <div>
+    <div style={{ paddingLeft: "200px" }}>
       <Header />
       <ProductPeriod />
       <ProductInformation />

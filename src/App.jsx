@@ -8,10 +8,7 @@ function App() {
   return (
     <div>
       <Navigation />
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "200px" }}></div>
-        <ProductRegister />
-      </div>
+      <ProductRegister />
     </div>
   );
 }
