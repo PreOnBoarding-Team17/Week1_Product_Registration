@@ -1,0 +1,13 @@
+$border-color: 4px solid #e9e9e9;
+$border-thin-color: 2px solid #f1f1f1;
+
+.product-period {
+  border: $border-color;
+  font-weight: 700;
+  font-size: 16px;
+
+  .product-period__title {
+    border: $border-thin-color;
+    padding: 1.5vh;
+  }
+}
