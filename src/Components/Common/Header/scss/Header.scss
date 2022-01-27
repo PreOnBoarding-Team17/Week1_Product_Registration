@@ -1,0 +1,37 @@
+.header__container {
+  width: 100%;
+  .header__box-blank {
+    height: 60px;
+    border-bottom: 1px solid #e3e3e3;
+  }
+  .header__box {
+    height: 50px;
+    border-bottom: 2px solid #e3e3e3;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+    > h1 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    > button {
+      width: 90px;
+      height: 40px;
+      border: none;
+      border-radius: 8px;
+      background-color: #352f6e;
+      color: white;
+      letter-spacing: 2px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        transition: 0.5s;
+        font-size: 15.5px;
+        background-color: #47417a;
+      }
+    }
+  }
+}
