@@ -1,50 +1,34 @@
-$border-color: 4px solid #e9e9e9;
-$border-thin-color: 2px solid #f1f1f1;
-
-.product-period-container {
+.product-period-container__input {
   display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-weight: 600;
 
-  .product-period-container__title {
-    padding: 1.5vh;
-    font-size: 14px;
-    font-weight: bold;
-    border-bottom: $border-thin-color;
-    border-right: $border-thin-color;
-    background-color: #fbfbfb;
+  .product-period-container__input--radio {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5vh 0;
+
+    input[type="radio"] {
+      font-size: 100px;
+      width: 18px;
+      height: 18px;
+      border-radius: 100%;
+      margin-right: 1vw;
+    }
   }
 
-  .product-period-container__input {
+  .product-period-container__input--date {
     display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-    font-weight: 700;
-    vertical-align: middle;
-    border-top: $border-thin-color;
+    align-items: center;
 
-    .product-period-container__input--radio {
-      display: flex;
-      flex-direction: column;
-      margin: 2.5vh 2.5vw;
-
-      input[type="radio"] {
-        font-size: 100px;
-        width: 18px;
-        height: 18px;
-        border-radius: 100%;
-        margin-right: 1vw;
-      }
-    }
-
-    .product-period-container__input--date {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .date-middle {
+      margin: 0 1.5vw;
     }
 
     input[type="date"],
     input[type="datetime-local"] {
-      width: 200px;
+      width: 230px;
       height: 36px;
       text-align: center;
       font-weight: 700;
