@@ -1,0 +1,30 @@
+.gray-box {
+  border: 2px solid #e3e3e3;
+  box-sizing: border-box;
+  width: 95%;
+  margin: auto;
+}
+
+.title {
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+  font-weight: 600;
+}
+
+.menu {
+  display: flex;
+}
+
+.left-menu {
+  width: 15%;
+  background-color: #fbfbfb;
+  padding: 20px 10px;
+  border: 1px solid #e3e3e3;
+}
+
+.right-menu {
+  padding: 20px 10px;
+  border: 1px solid #e3e3e3;
+
+  width: 85%;
+}
