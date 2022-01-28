@@ -4,7 +4,7 @@
   flex-direction: column;
   font-weight: 600;
 
-  .product-period-container__input--radio {
+  &--radio {
     display: flex;
     flex-direction: column;
     margin: 2.5vh 0;
@@ -18,7 +18,7 @@
     }
   }
 
-  .product-period-container__input--date {
+  &--date {
     display: flex;
     align-items: center;
 
