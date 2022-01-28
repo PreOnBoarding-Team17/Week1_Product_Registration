@@ -1,6 +1,8 @@
 import React from "react";
 import PrductPeriodContainer from "./PrductPeriodContainer";
 
+import "Utils/Styles/date.scss";
+
 const EXPOSEPERIOD = ["제한 없음", "미노출", "노출 기간 설정"];
 const SALESPERIOD = ["제한 없음", "미판매", "판매 기간 설정"];
 
