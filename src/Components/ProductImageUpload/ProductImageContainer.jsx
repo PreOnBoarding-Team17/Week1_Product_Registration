@@ -6,7 +6,7 @@ import "Components/ProductImageUpload/scss/ProductImageContainer.scss";
 function ProductImageContainer({ title, name, files, onChange, isSingular }) {
   return (
     <section className="gray-box">
-      <div className="title">{title}</div>
+      <div className="img__title">{title}</div>
       <div className="menu img-place">
         <ImageUploader
           name={name}

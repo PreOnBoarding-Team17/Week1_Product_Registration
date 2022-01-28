@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "Assets/logo.png";
 import Arrow from "Assets/arrow_down.svg";
-import NAVIGATIONLIST from "Utils/Constants/NavigationList";
+import NAVIGATION_LIST from "Utils/Constants/NavigationList";
 import "Components/Common/Navigation/scss/Navigation.scss";
 
 export default function Navigation() {
@@ -10,7 +10,7 @@ export default function Navigation() {
       <div className="navigation__logo-box">
         <img className="navigation__logo" src={Logo} alt="로고 이미지" />
       </div>
-      {NAVIGATIONLIST.map((element, index) => {
+      {NAVIGATION_LIST.map((element, index) => {
         if (element.className === "menu")
           return (
             <div key={index} className="navigation__menu">
