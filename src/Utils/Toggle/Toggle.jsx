@@ -26,7 +26,7 @@ function Toggle({ name }) {
             type="checkbox"
             name={name}
             value={toggles[name]}
-            onClick={onToggle}
+            onChange={onToggle}
             checked={checked}
           />
         ) : (
@@ -34,7 +34,8 @@ function Toggle({ name }) {
             type="checkbox"
             name={name}
             value={toggles[name]}
-            onClick={onToggle}
+            onChange={onToggle}
+            checked={false}
           />
         )}
 

@@ -1,7 +1,96 @@
-.product-notice {
-  &__title {
-    padding: 1.2rem;
-    font-weight: 600;
-    box-sizing: border-box;
+.wrapper {
+  margin: 20px 20px 20px;
+  border: 3px solid #efefef;
+  background-color: #efefef;
+  min-height: 70vh;
+  height: 100%;
+
+  .product-notice {
+    border: 2px solid #efefef;
+
+    .white-bg {
+      background: white;
+      box-sizing: border-box;
+      margin: 20px 15px 20px;
+      min-height: 50vh;
+    }
+
+    &__title {
+      display: flex;
+      font-weight: 700;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px 20px;
+
+      .delete {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 2px solid #e2e2e2;
+        background: transparent;
+        font-weight: 700;
+        font-size: 1em;
+      }
+    }
+
+    &__inputs {
+      .new-input {
+        padding: 20px 40px 20px 30px;
+        display: flex;
+        justify-content: space-between;
+
+        input {
+          padding: 10px;
+        }
+        input::placeholder {
+          color: #b1b1b1;
+          font-size: 12px;
+        }
+
+        &__first {
+          width: 180px;
+          border: 2px solid #e2e2e2;
+        }
+        &__split {
+          display: flex;
+          justify-content: space-between;
+          width: calc(60% + 16px);
+        }
+        &__second {
+          width: 240px;
+          border: 2px solid #e2e2e2;
+        }
+        &__delete {
+          border: 1px solid #e2e2e2;
+          padding: 10px 40px;
+          background: transparent;
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+.plus {
+  border: 2px solid #e2e2e2;
+  background-color: transparent;
+  color: #37335d;
+  font-weight: 700;
+  padding: 10px 36px;
+  margin: 0px 30px 20px;
+}
+
+.plus-info {
+  display: flex;
+  justify-content: center;
+  margin: 10px 20px 0px;
+  &__btn {
+    width: 100%;
+    border: 2px solid #e2e2e2;
+    background-color: transparent;
+    color: #37335d;
+    border: 1.5px solid #37335d;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 0;
   }
 }
