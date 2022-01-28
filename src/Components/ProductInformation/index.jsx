@@ -6,7 +6,9 @@ import ProductCompsitionInfo from "./ProductCompsitionInfo";
 import "Components/ProductInformation/scss/ProductInformation.scss";
 
 function ProductInformation() {
-  let uniqueCode = Math.floor(Math.random() * 1e8);
+  // const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  // let result1= Math.random().toString(36).substring(0,num);
+  let uniqueCode = (Math.random() * 1e12).toString(36).substring(0, 8);
 
   return (
     <section className="gray-box information__container">
