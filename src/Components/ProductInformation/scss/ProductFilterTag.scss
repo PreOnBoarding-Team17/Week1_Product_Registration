@@ -24,6 +24,10 @@
     background-color: white;
     border: 1px solid #3e3874;
     border-radius: 0.4rem;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 2px 2px 6px #e3e3e3;
+    }
   }
 }
 
@@ -41,6 +45,10 @@
       margin: 0.5rem 0.5rem;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 2px 2px 6px #e3e3e3;
+      }
     }
   }
 }

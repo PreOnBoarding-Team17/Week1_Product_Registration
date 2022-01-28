@@ -12,9 +12,6 @@
     border: 1px solid #e3e3e3;
     border-radius: 0.5rem;
     box-sizing: border-box;
-
-    .information__category__list-item {
-    }
   }
   .information__category__select-area {
     width: 40%;
@@ -41,6 +38,7 @@
         .information__category__select-list-btn {
           border: none;
           background-color: transparent;
+          cursor: pointer;
         }
       }
     }

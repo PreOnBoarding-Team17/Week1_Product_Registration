@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import FilterTagSelectList from "./FilterTagSelectList";
+import FilterTagSearchResult from "./FilterTagSearchResult";
 import "Components/ProductInformation/scss/ProductFilterTag.scss";
 
 function ProductFilterTag() {
-  const [filterSearch, setFilterSearch] = useState(false);
+  const [toggleSearch, setToggleSearch] = useState(false);
+  const [filterTag, setFilterTag] = useState([]);
 
   return (
     <>
@@ -11,28 +14,34 @@ function ProductFilterTag() {
           type="text"
           className="filter-tag__input"
           placeholder="필터태그를 검색해 주세요."
-          onFocus={() => setFilterSearch(true)}
-          onBlur={() => setFilterSearch(false)}
+          onFocus={() => setToggleSearch(true)}
+          // onBlur={() => setToggleSearch(false)}
         />
         <button className="filter-tag__btn">검색</button>
       </div>
-      {filterSearch && (
-        <div className="filter-tag__search-result">
-          <ul className="filter-tag__search-result__list">
-            <li className="filter-tag__search-result__item">필터태그</li>
-            <li className="filter-tag__search-result__item">필터태그</li>
-            <li className="filter-tag__search-result__item">필터태그asdf</li>
-            <li className="filter-tag__search-result__item">필터태그a</li>
-            <li className="filter-tag__search-result__item">필터태그</li>
-            <li className="filter-tag__search-result__item">필터태그</li>
-            <li className="filter-tag__search-result__item">필터태그asfd</li>
-            <li className="filter-tag__search-result__item">필터태그</li>
-            <li className="filter-tag__search-result__item">필터태그</li>
-            <li className="filter-tag__search-result__item">필터태그asdf</li>
-            <li className="filter-tag__search-result__item">필터태그</li>
-            <li className="filter-tag__search-result__item">필터태그</li>
+      {filterTag.length > 0 && (
+        <div className="filter-tag__select-list">
+          <h3 className="filter-tag__select-list__title">지정된 필터 태그</h3>
+          <ul className="filter-tag__select-list__wrap">
+            {filterTag.map((tag, index) => {
+              return (
+                <FilterTagSelectList
+                  filterTag={filterTag}
+                  setFilterTag={setFilterTag}
+                  tag={tag}
+                  key={index}
+                />
+              );
+            })}
           </ul>
         </div>
+      )}
+      {toggleSearch && (
+        <FilterTagSearchResult
+          filterTag={filterTag}
+          setFilterTag={setFilterTag}
+          setToggleSearch={setToggleSearch}
+        />
       )}
     </>
   );
