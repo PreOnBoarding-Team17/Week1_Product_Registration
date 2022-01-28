@@ -16,7 +16,6 @@ function ProductRecommendImage() {
         files={inputs.productIntroImages}
         name="productIntroImages"
         onChange={onFileChange}
-        isSingular
       />
       <ProductImageContainer
         title={IMGTITLE[1]}

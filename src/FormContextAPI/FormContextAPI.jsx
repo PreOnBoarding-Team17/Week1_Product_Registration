@@ -25,6 +25,12 @@ function FormContentAPI({ children }) {
     productThumnailImage: [],
     productMainImages: [],
   });
+  const [images, setImages] = useState({
+    productIntroImages: [],
+    productRecommendImages: [],
+    productThumnailImage: [],
+    productMainImages: [],
+  });
   //state는 예시 입니다.
   const [state, setState] = useState("state");
 
@@ -53,7 +59,7 @@ function FormContentAPI({ children }) {
   const onFileChange = (e, value) => {
     let { name } = e.target;
 
-    setInputs({ ...inputs, [name]: value });
+    setImages({ ...images, [name]: value });
   };
 
   const data = {
@@ -63,7 +69,7 @@ function FormContentAPI({ children }) {
     },
 
     filesData: {
-      state: inputs,
+      state: images,
       setState: onFileChange,
     },
 
