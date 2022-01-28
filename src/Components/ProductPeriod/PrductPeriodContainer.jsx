@@ -9,6 +9,7 @@ function PrductPeriodContainer({ period, dateType }) {
         {period.map((x, idx) => (
           <label key={idx}>
             <input type="radio" name={x} />
+            <span></span>
             {x}
           </label>
         ))}
