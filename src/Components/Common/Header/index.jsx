@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { FormContext } from "FormContextAPI/FormContextAPI";
 
 import "Components/Common/Header/scss/Header.scss";
@@ -6,19 +6,20 @@ import "Components/Common/Header/scss/Header.scss";
 const ONEDAYMILESECONDS = 86400000;
 
 export default function Header() {
-  const { inputs } = useContext(FormContext);
-  const [result, setResult] = useState({});
+  const context = useContext(FormContext).inputsData;
+  const inputs = context.state;
 
-  useEffect(() => {
-    console.log(result);
-  }, [result]);
+  const context2 = useContext(FormContext).datesData;
+  const dates = context2.state;
+
+  let result = { ...useContext(FormContext) };
 
   // 1,2 번 노출, 제출 기간 설정 검사
   const productPeriodCheck = (name) => {
-    if (result[name] === "2") {
+    if (inputs[name] === "2") {
       const temp = Date.now();
-      const exposureDateFrom = Date.parse(result[`${name}DateFrom`]);
-      const exposureDateTo = Date.parse(result[`${name}DateTo`]);
+      const exposureDateFrom = Date.parse(dates[`${name}DateFrom`]);
+      const exposureDateTo = Date.parse(dates[`${name}DateTo`]);
 
       if (
         isNaN(exposureDateFrom) ||
@@ -26,9 +27,7 @@ export default function Header() {
         temp - exposureDateFrom + ONEDAYMILESECONDS < 0 ||
         exposureDateTo - temp + ONEDAYMILESECONDS < 0
       ) {
-        setResult((prev) => {
-          return { ...prev, [name]: "1" };
-        });
+        result["dates"][name] = "1";
       }
     }
   };
@@ -36,8 +35,6 @@ export default function Header() {
   // inputs 최종 제출 하기전의 검사
   const onSubmit = (e) => {
     e.preventDefault();
-
-    setResult({ ...inputs });
 
     productPeriodCheck("productExposure");
     productPeriodCheck("productSales");

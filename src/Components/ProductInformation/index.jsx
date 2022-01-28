@@ -6,13 +6,12 @@ import ProductName from "./ProductName";
 import ProductCompositionInfo from "./ProductCompositionInfo";
 import "Components/ProductInformation/scss/ProductInformation.scss";
 import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploader";
-import { FormContext } from "FormContextAPI/FormContextAPI";
 
 function ProductInformation() {
   const context = useContext(FormContext).informationData;
   const infoData = context.state;
   const onChangeInfoData = context.setState;
- 
+
   const fileContext = useContext(FormContext).filesData;
   const inputs = fileContext.state;
   const onFileChange = fileContext.setState;

@@ -1,38 +1,40 @@
 import React, { useEffect, useContext, useState } from "react";
 import { FormContext } from "FormContextAPI/FormContextAPI";
+
 import "Utils/Toggle/Toggle.scss";
 
-function Toggle({ name, value, onChange }) {
+function Toggle({ name }) {
   const [checked, setChecked] = useState(false);
-  const context = useContext(FormContext).inputsData;
-  const inputs = context.state;
+  const context = useContext(FormContext).togglesData;
+
+  const toggles = context.state;
+  const onToggle = context.setState;
 
   useEffect(() => {
-    if (inputs[name] === "true") {
+    if (toggles[name] === "true") {
       setChecked(true);
     } else {
       setChecked(false);
     }
-  }, [inputs[name]]);
+  }, [toggles[name]]);
 
   return (
     <div className="toggle-container">
       <label className="toggle">
-        {value === "true" ? (
+        {checked ? (
           <input
             type="checkbox"
             name={name}
-            value={value}
-            onClick={onChange}
+            value={toggles[name]}
+            onClick={onToggle}
             checked={checked}
           />
         ) : (
           <input
             type="checkbox"
             name={name}
-            value={value}
-            onClick={onChange}
-            checked={checked}
+            value={toggles[name]}
+            onClick={onToggle}
           />
         )}
 
