@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "Utils/Toggle/Toggle.scss";
 
-function Toggle() {
-  const [toggle, setToggle] = useState(false);
-
+function Toggle({ name, value, onChange }) {
   return (
     <div className="toggle-container">
       <label className="toggle">
-        <input
-          type="checkbox"
-          onChange={() => {
-            setToggle(!toggle);
-          }}
-        />
+        <input type="checkbox" name={name} value={value} onChange={onChange} />
+
         <span className="slider" />
       </label>
     </div>

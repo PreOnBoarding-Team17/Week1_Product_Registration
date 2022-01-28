@@ -1,24 +1,44 @@
 .product-period-container__input {
+  margin: 0 1em;
   display: flex;
   width: 100%;
   flex-direction: column;
-  font-weight: 600;
 
   &--radio {
+    position: relative;
     display: flex;
     flex-direction: column;
-    margin: 2.5vh 0;
+
+    font-size: 17px;
+
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
 
     input[type="radio"] {
-      font-size: 100px;
-      width: 18px;
-      height: 18px;
-      border-radius: 100%;
-      margin-right: 1vw;
+      appearance: none;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid #282828;
+      margin-right: 12px;
+    }
+    input[type="radio"]:checked + span {
+      position: absolute;
+      background: #352f6d;
+      left: 9px;
+
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
     }
   }
 
   &--date {
+    margin-top: 12px;
     display: flex;
     align-items: center;
 
