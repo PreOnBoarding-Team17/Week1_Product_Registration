@@ -27,7 +27,12 @@ function FormContentAPI({ children }) {
     thanks: "false",
   });
 
-  // const [first, setfirst] = useState(second);
+  const [images, setImages] = useState({
+    productIntroImages: [],
+    productRecommendImages: [],
+    productThumnailImage: [],
+    productMainImages: [],
+  });
 
   const onChange = (e) => {
     let { value, name } = e.target;
@@ -82,6 +87,29 @@ function FormContentAPI({ children }) {
     setToggles({ ...copy });
   };
 
+  const [infoData, setInfoData] = useState({
+    category: [],
+    filterTag: [],
+    productName: "",
+    productCode: (Math.random() * 1e12).toString(36).substring(0, 8),
+    productComposition: "",
+    productthumbnail: [],
+    productMainImage: [],
+    totalProduct: 0,
+  });
+
+  const onChangeInfoData = (name, newData) => {
+    const copy = { ...infoData };
+    copy[name] = newData;
+    setInfoData({ ...copy });
+  };
+
+  const onFileChange = (e, value) => {
+    let { name } = e.target;
+
+    setImages({ ...images, [name]: value });
+  };
+
   const data = {
     inputsData: {
       state: inputs,
@@ -94,6 +122,14 @@ function FormContentAPI({ children }) {
     datesData: {
       state: dates,
       setState: onDatesChange,
+    },
+    filesData: {
+      state: images,
+      setState: onFileChange,
+    },
+    informationData: {
+      state: infoData,
+      setState: onChangeInfoData,
     },
   };
 
