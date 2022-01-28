@@ -1,3 +1,11 @@
+.top {
+  padding-top: 150px;
+  box-sizing: border-box;
+  margin: 0 20px;
+  .wrapper {
+    border: 2px solid #e3e3e3;
+  }
+}
 .product-period-container__input {
   margin: 0 1em;
   display: flex;

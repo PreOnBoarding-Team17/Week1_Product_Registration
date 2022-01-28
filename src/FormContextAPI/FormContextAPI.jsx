@@ -34,6 +34,8 @@ function FormContentAPI({ children }) {
     productMainImages: [],
   });
 
+  const [option, setOption] = useState([]);
+
   const onChange = (e) => {
     let { value, name } = e.target;
     let copy = { ...inputs };
@@ -129,11 +131,15 @@ function FormContentAPI({ children }) {
       state: infoData,
       setState: onChangeInfoData,
     },
+    optionData: {
+      state: option,
+      setState: setOption,
+    },
   };
 
   useEffect(() => {
     console.log(data);
-  }, [inputs, infoData, images]);
+  }, [inputs, option, infoData, images]);
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }

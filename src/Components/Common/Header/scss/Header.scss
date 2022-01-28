@@ -1,7 +1,12 @@
 .header__container {
-  width: 100%;
+  width: calc(100% - 200px);
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  border-left: 2px solid #e3e3e3;
   .header__box-blank {
     height: 60px;
+    background-color: white;
     border-bottom: 1px solid #e3e3e3;
   }
   .header__box {
