@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteButton from "Utils/Button/DeleteButton";
+import { handleAddOption, handleDeleteOption } from "Utils/OptionSetting";
+import ProductOptionImage from "./ProductOptionImage";
 import ProductOptionList from "Components/ProductOption/ProductOptionList";
 import "Components/ProductOption/scss/ProductOptionSet.scss";
-import ProductOptionImage from "./ProductOptionImage";
 
-export default function ProductOptionSet() {
+export default function ProductOptionSet({ optionSet, onClick }) {
+  const [optionList, setOptionList] = useState([0]);
   return (
-    <section className="option-set__container">
-      <div className="option-set__button-box">
-        <DeleteButton />
-      </div>
-      <div className="option-set__wrapper">
-        <ProductOptionImage />
-        <ProductOptionList />
-        <button className="option-set__add-button">+ 옵션 추가</button>
-      </div>
-    </section>
+    <>
+      {optionSet.length !== 0 ? (
+        optionSet.map((element) => (
+          <section key={element} className="option-set__container">
+            <div className="option-set__button-box">
+              <DeleteButton onClick={onClick} />
+            </div>
+            <div className="option-set__wrapper">
+              <ProductOptionImage />
+              <ProductOptionList
+                optionList={optionList}
+                onClick={() => handleDeleteOption(setOptionList)}
+              />
+              <button
+                className="option-set__add-button"
+                onClick={() => handleAddOption(optionList, setOptionList)}
+              >
+                + 옵션 추가
+              </button>
+            </div>
+          </section>
+        ))
+      ) : (
+        <div>
+          <p>옵션세트를 추가하여 옵션을 구성해 주세요.</p>
+        </div>
+      )}
+    </>
   );
 }
