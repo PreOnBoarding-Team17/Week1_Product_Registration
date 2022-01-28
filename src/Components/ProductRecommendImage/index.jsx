@@ -1,7 +1,12 @@
 import React from "react";
+import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploader";
 
 function ProductRecommendImage() {
-  return <div>ProductRecommendImage</div>;
+  return (
+    <div>
+      <ProductImageUploader />
+    </div>
+  );
 }
 
 export default ProductRecommendImage;
