@@ -1,0 +1,32 @@
+.option__title-box {
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #e3e3e3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .option__title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  .option__button {
+    margin-right: 10px;
+    height: 80%;
+    width: 150px;
+    border: 1px solid #352f6e;
+    background-color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      transition: 0.3s;
+      font-weight: 700;
+    }
+  }
+}
+.option__list {
+  background-color: #eeeeee;
+  padding: 10px;
+}
