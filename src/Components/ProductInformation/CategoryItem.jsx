@@ -5,9 +5,15 @@ function CategoryItem({ category, index, selected, setSelected }) {
   const handleCheckboxChange = (e) => {
     const { checked } = e.target;
     if (checked) {
-      setSelected([...selected, index].sort((a, b) => +a - +b));
+      setSelected(
+        "category",
+        [...selected, index].sort((a, b) => +a - +b)
+      );
     } else if (!checked) {
-      setSelected(selected.filter((s) => s !== index));
+      setSelected(
+        "category",
+        selected.filter((s) => s !== index)
+      );
     }
   };
 

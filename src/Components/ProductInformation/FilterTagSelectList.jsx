@@ -3,7 +3,10 @@ import "Components/ProductInformation/scss/FilterTagSelectList.scss";
 
 function FilterTagSelectList({ filterTag, setFilterTag, tag }) {
   const removeFilterTag = () => {
-    setFilterTag(filterTag.filter((el) => el !== tag));
+    setFilterTag(
+      "filterTag",
+      filterTag.filter((el) => el !== tag)
+    );
   };
 
   return (

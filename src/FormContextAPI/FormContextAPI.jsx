@@ -4,47 +4,116 @@ const FormContext = createContext();
 
 function FormContentAPI({ children }) {
   const [inputs, setInputs] = useState({
-    //자신이 쓸 변수들 `name : 초기값`이 형식으로 선언
     productExposure: 0,
+    productSales: 0,
+  });
+
+  const [dates, setDates] = useState({
     productExposureDateFrom: "",
     productExposureDateTo: "",
-    productSales: 0,
     productSalesDateFrom: "",
     productSalesDateTo: "",
-    shippingDate: "false",
-    pickUpVisit: "false",
-    reservedShipping: "true",
     orderTimeFrom: "",
     orderTimeTo: "",
     dawnShipping: "",
     normalShipping: "",
+  });
+
+  const [toggles, setToggles] = useState({
+    shippingDate: "false",
+    pickUpVisit: "false",
+    reservedShipping: "true",
     mileage: "true",
     thanks: "false",
   });
+<<<<<<< HEAD
   //state는 예시 입니다.
   const [state, setState] = useState("state");
   const [option, setOption] = useState([]);
+=======
+
+  const [images, setImages] = useState({
+    productIntroImages: [],
+    productRecommendImages: [],
+    productThumnailImage: [],
+    productMainImages: [],
+  });
+>>>>>>> feb2f87ea7f8005720f6ee9eb44f9a5d55e7d126
 
   const onChange = (e) => {
-    let { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+    let { value, name } = e.target;
     let copy = { ...inputs };
+    copy[name] = value;
+
+    setInputs({ ...copy });
+  };
+
+  const onDatesChange = (e) => {
+    let { value, name } = e.target;
+    let copy = { ...dates };
+
+    if (name === "dawnShipping" || name === "normalShipping") {
+      const timeOrderFrom = Date.parse(dates[`orderTimeFrom`]);
+      const timeOrderTo = Date.parse(dates[`orderTimeFrom`]);
+      const dateShipping = Date.parse(value);
+      console.log(timeOrderFrom, timeOrderTo, dateShipping);
+
+      if (!isNaN(copy["orderTimeFrom"]) || !isNaN(copy["orderTimeTo"])) {
+        alert("주문시간 먼저 작성하세요");
+      } else if (
+        dateShipping - timeOrderFrom < 0 ||
+        timeOrderTo - timeOrderTo < 0
+      ) {
+        alert("주문시간 이후로 출고일을 지정해주세요.");
+      }
+    }
+
+    copy[name] = value;
+    setDates({ ...copy });
+  };
+
+  const onToggle = (e) => {
+    let { value, name } = e.target;
+    let copy = { ...toggles };
 
     if (value === `true`) {
       copy[name] = "false";
-    } else if (value === `false`) {
+    } else {
       copy[name] = "true";
 
-      if (name === "shippingDate" || name === "pickUpVisit") {
-        copy["reservedShipping"] = "false";
-      } else if (name === "reservedShipping") {
+      if (name === "reservedShipping") {
         copy["shippingDate"] = "false";
         copy["pickUpVisit"] = "false";
+      } else if (name === "shippingDate" || name === "pickUpVisit") {
+        copy["reservedShipping"] = "false";
+        console.log(copy);
       }
-    } else {
-      copy[name] = value;
     }
 
-    setInputs({ ...copy });
+    setToggles({ ...copy });
+  };
+
+  const [infoData, setInfoData] = useState({
+    category: [],
+    filterTag: [],
+    productName: "",
+    productCode: (Math.random() * 1e12).toString(36).substring(0, 8),
+    productComposition: "",
+    productthumbnail: [],
+    productMainImage: [],
+    totalProduct: 0,
+  });
+
+  const onChangeInfoData = (name, newData) => {
+    const copy = { ...infoData };
+    copy[name] = newData;
+    setInfoData({ ...copy });
+  };
+
+  const onFileChange = (e, value) => {
+    let { name } = e.target;
+
+    setImages({ ...images, [name]: value });
   };
 
   const data = {
@@ -52,9 +121,21 @@ function FormContentAPI({ children }) {
       state: inputs,
       setState: onChange,
     },
-    stateData: {
-      state: state,
-      setState: setState,
+    togglesData: {
+      state: toggles,
+      setState: onToggle,
+    },
+    datesData: {
+      state: dates,
+      setState: onDatesChange,
+    },
+    filesData: {
+      state: images,
+      setState: onFileChange,
+    },
+    informationData: {
+      state: infoData,
+      setState: onChangeInfoData,
     },
     optionData: {
       state: option,
@@ -63,9 +144,12 @@ function FormContentAPI({ children }) {
   };
 
   useEffect(() => {
-    //inputs 바뀌고 즉시 검사할꺼 있으면 여기
     console.log(data);
+<<<<<<< HEAD
   }, [inputs, option]);
+=======
+  }, [data]);
+>>>>>>> feb2f87ea7f8005720f6ee9eb44f9a5d55e7d126
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }

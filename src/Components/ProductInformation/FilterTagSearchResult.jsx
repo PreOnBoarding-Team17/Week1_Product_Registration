@@ -10,7 +10,7 @@ function FilterTagSearchResult({
 }) {
   const addFilterTag = (e) => {
     if (!filterTag.includes(e.target.innerText)) {
-      setFilterTag([...filterTag, e.target.innerText]);
+      setFilterTag("filterTag", [...filterTag, e.target.innerText]);
     }
     setToggleSearch(false);
     setSearchInput("");
