@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import ProductImageContainer from "Components/ProductRecommendImage/ProductImageContainer";
+import ProductImageContainer from "Components/ProductImageUpload/ProductImageContainer";
 import { FormContext } from "FormContextAPI/FormContextAPI";
 
 const IMGTITLE = ["상품 소개 이미지", "구매자 추천 이미지"];
 
-function ProductRecommendImage() {
+function ProductImageUpload() {
   const context = useContext(FormContext).filesData;
   const inputs = context.state;
   const onFileChange = context.setState;
@@ -27,4 +27,4 @@ function ProductRecommendImage() {
   );
 }
 
-export default ProductRecommendImage;
+export default ProductImageUpload;

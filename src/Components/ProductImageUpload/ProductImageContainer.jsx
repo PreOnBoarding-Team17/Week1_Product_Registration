@@ -1,14 +1,14 @@
 import React from "react";
-import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploader";
+import ImageUploader from "Utils/ImageUploader";
 
-import "Components/ProductRecommendImage/scss/ProductImageContainer.scss";
+import "Components/ProductImageUpload/scss/ProductImageContainer.scss";
 
 function ProductImageContainer({ title, name, files, onChange, isSingular }) {
   return (
     <section className="gray-box">
       <div className="title">{title}</div>
       <div className="menu img-place">
-        <ProductImageUploader
+        <ImageUploader
           name={name}
           files={files}
           isSingular={isSingular}
