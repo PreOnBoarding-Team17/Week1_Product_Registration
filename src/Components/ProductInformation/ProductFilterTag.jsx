@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import FilterTagSelectList from "./FilterTagSelectList";
 import FilterTagSearchResult from "./FilterTagSearchResult";
+import { TAG_LIST } from "Utils/Constants/TagList";
 import "Components/ProductInformation/scss/ProductFilterTag.scss";
 
 function ProductFilterTag() {
   const [toggleSearch, setToggleSearch] = useState(false);
   const [filterTag, setFilterTag] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
+  const onChangeFilterInput = (e) => {
+    const newInput = e.target.value;
+    setSearchInput(newInput);
+    const newFilter = TAG_LIST.filter((tag) => {
+      return tag.includes(newInput) && !filterTag.includes(tag);
+    });
+    setSearchResult(newFilter);
+  };
 
   return (
     <>
@@ -15,6 +27,8 @@ function ProductFilterTag() {
           className="filter-tag__input"
           placeholder="필터태그를 검색해 주세요."
           onFocus={() => setToggleSearch(true)}
+          value={searchInput}
+          onChange={onChangeFilterInput}
           // onBlur={() => setToggleSearch(false)}
         />
         <button className="filter-tag__btn">검색</button>
@@ -38,9 +52,12 @@ function ProductFilterTag() {
       )}
       {toggleSearch && (
         <FilterTagSearchResult
+          searchResult={searchResult}
           filterTag={filterTag}
           setFilterTag={setFilterTag}
           setToggleSearch={setToggleSearch}
+          inputLength={searchInput.length}
+          setSearchInput={setSearchInput}
         />
       )}
     </>
