@@ -4,15 +4,14 @@ import ProductCategory from "Components/ProductInformation/ProductCategory";
 import ProductFilterTag from "./ProductFilterTag";
 import ProductName from "./ProductName";
 import ProductCompositionInfo from "./ProductCompositionInfo";
+import ImageUploader from "Utils/ImageUploader";
 import "Components/ProductInformation/scss/ProductInformation.scss";
-import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploader";
-import { FormContext } from "FormContextAPI/FormContextAPI";
 
 function ProductInformation() {
   const context = useContext(FormContext).informationData;
   const infoData = context.state;
   const onChangeInfoData = context.setState;
- 
+
   const fileContext = useContext(FormContext).filesData;
   const inputs = fileContext.state;
   const onFileChange = fileContext.setState;
@@ -65,7 +64,7 @@ function ProductInformation() {
       <div className="menu">
         <div className="left-menu">상품 썸네일</div>
         <div className="right-menu">
-          <ProductImageUploader
+          <ImageUploader
             name="productThumnailImage"
             files={inputs.productThumnailImage}
             isSingular={true}
@@ -76,7 +75,7 @@ function ProductInformation() {
       <div className="menu">
         <div className="left-menu">상품 대표 이미지</div>
         <div className="right-menu">
-          <ProductImageUploader
+          <ImageUploader
             name="productMainImages"
             files={inputs.productMainImages}
             onChange={onFileChange}
