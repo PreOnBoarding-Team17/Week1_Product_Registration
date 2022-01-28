@@ -11,7 +11,9 @@ const EXTRASETTING_1 = ["상품 혜택 허용 설정", "마일리지 적립"];
 const EXTRASETTING_2 = ["기타 설정", "감사카드 설정"];
 
 function ProductShippingSetting() {
-  const { inputs, onChange } = useContext(FormContext);
+  const context = useContext(FormContext).inputsData;
+  const inputs = context.state;
+  const onChange = context.setState;
 
   return (
     <div className="product-shipping-setting-container">

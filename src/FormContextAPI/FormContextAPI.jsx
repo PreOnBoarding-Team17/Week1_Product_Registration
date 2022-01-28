@@ -1,9 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
-const FormContext = createContext({
-  inputs: {},
-  onChange: () => {},
-});
+const FormContext = createContext();
 
 function FormContentAPI({ children }) {
   const [inputs, setInputs] = useState({
@@ -24,8 +21,8 @@ function FormContentAPI({ children }) {
     mileage: "true",
     thanks: "false",
   });
-
-  // <input name=자기가 선언한 변수명 value={inputs.자기가 선언한 변수명}/>
+  //state는 예시 입니다.
+  const [state, setState] = useState("state");
 
   const onChange = (e) => {
     let { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
@@ -49,22 +46,23 @@ function FormContentAPI({ children }) {
     setInputs({ ...copy });
   };
 
+  const data = {
+    inputsData: {
+      state: inputs,
+      setState: onChange,
+    },
+    stateData: {
+      state: state,
+      setState: setState,
+    },
+  };
+
   useEffect(() => {
     //inputs 바뀌고 즉시 검사할꺼 있으면 여기
-
-    console.log(inputs);
+    console.log(data);
   }, [inputs]);
 
-  return (
-    <FormContext.Provider
-      value={{
-        inputs,
-        onChange,
-      }}
-    >
-      {children}
-    </FormContext.Provider>
-  );
+  return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }
 
 export { FormContext, FormContentAPI };

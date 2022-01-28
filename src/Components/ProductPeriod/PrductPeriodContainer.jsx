@@ -4,7 +4,9 @@ import { FormContext } from "FormContextAPI/FormContextAPI";
 import "Components/ProductPeriod/scss/PrductPeriodContainer.scss";
 
 function PrductPeriodContainer({ name, period, dateType }) {
-  const { inputs, onChange } = useContext(FormContext);
+  const context = useContext(FormContext).inputsData;
+  const inputs = context.state;
+  const onChange = context.setState;
 
   return (
     <div className="product-period-container__input">

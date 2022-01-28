@@ -4,7 +4,8 @@ import "Utils/Toggle/Toggle.scss";
 
 function Toggle({ name, value, onChange }) {
   const [checked, setChecked] = useState(false);
-  const { inputs } = useContext(FormContext);
+  const context = useContext(FormContext).inputsData;
+  const inputs = context.state;
 
   useEffect(() => {
     if (inputs[name] === "true") {
@@ -23,7 +24,6 @@ function Toggle({ name, value, onChange }) {
             name={name}
             value={value}
             onClick={onChange}
-            // onChange={onChange}
             checked={checked}
           />
         ) : (
@@ -32,7 +32,6 @@ function Toggle({ name, value, onChange }) {
             name={name}
             value={value}
             onClick={onChange}
-            // onChange={onChange}
             checked={checked}
           />
         )}
