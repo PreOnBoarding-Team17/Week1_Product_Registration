@@ -16,9 +16,9 @@ export default function ProductOptionImage({ index }) {
   const inputRef = useRef();
 
   useEffect(() => {
-    const originalState = [...state];
-    originalState[index].optionImage = image;
-    setState(originalState);
+    const updatedState = [...state];
+    updatedState[index].optionImage = image;
+    setState(updatedState);
   }, [image]);
 
   const handleClick = useCallback(() => {

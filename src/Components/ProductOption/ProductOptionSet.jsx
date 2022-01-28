@@ -12,24 +12,51 @@ export default function ProductOptionSet() {
 
   return (
     <>
-      {state.map((element, index) => (
-        <section key={index} className="option-set__container">
-          <div className="option-set__button-box">
-            <DeleteButton
-              onClick={() => {
-                const originalState = [...state];
-                originalState.splice(index, 1);
-                setState(originalState);
-              }}
-            />
-          </div>
-          <div className="option-set__wrapper">
-            <ProductOptionImage index={index} />
-            <ProductOptionList index={index} />
-            <button className="option-set__add-button">+ 옵션 추가</button>
-          </div>
-        </section>
-      ))}
+      {state.length !== 0 ? (
+        state.map((element, index) => (
+          <section key={index} className="option-set__container">
+            <div className="option-set__button-box">
+              <DeleteButton
+                onClick={() => {
+                  const updatedState = [...state];
+                  updatedState.splice(index, 1);
+                  setState(updatedState);
+                }}
+              />
+            </div>
+            <div className="option-set__wrapper">
+              <ProductOptionImage index={index} />
+              {state[index].optionContents.map((element, contentsIndex) => (
+                <ProductOptionList
+                  key={contentsIndex}
+                  index={index}
+                  contentsIndex={contentsIndex}
+                  contentsData={state[index].optionContents[contentsIndex]}
+                />
+              ))}
+              <button
+                className="option-set__add-button"
+                type="button"
+                onClick={() => {
+                  const updatedState = [...state];
+                  updatedState[index].optionContents.push({
+                    optionName: "",
+                    optionList: ["", "", "", "비과세"],
+                    extraOption: [],
+                  });
+                  setState(updatedState);
+                }}
+              >
+                + 옵션 추가
+              </button>
+            </div>
+          </section>
+        ))
+      ) : (
+        <div className="option-set__empty">
+          <p>옵션세트를 추가하여 옵션을 구성해 주세요.</p>
+        </div>
+      )}
     </>
   );
 }
