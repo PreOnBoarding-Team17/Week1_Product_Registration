@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Scss/PrductPeriodContainer.scss";
+import "Components/ProductPeriod/scss/PrductPeriodContainer.scss";
 
 function PrductPeriodContainer({ period, dateType }) {
   return (

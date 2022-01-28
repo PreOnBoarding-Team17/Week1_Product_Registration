@@ -1,9 +1,9 @@
 import React from "react";
 
-import ProductExtraSetting from "./ProductExtraSetting";
+import ProductExtraSetting from "Components/ProductShippingSetting/ProductExtraSetting";
 import Toggle from "Utils/Toggle/Toggle";
 
-import "./Scss/index.scss";
+import "Components/ProductShippingSetting/scss/ProductShippingSetting.scss";
 import "Utils/Styles/date.scss";
 
 const EXTRASETTING_1 = ["상품 혜택 허용 설정", "마일리지 적립"];
