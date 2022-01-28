@@ -6,9 +6,6 @@ import SelectedItem from "./SelectedItem";
 import "Components/ProductInformation/scss/ProductCategory.scss";
 
 function ProductCategory({ value, onChange }) {
-  // const [selected, setSelected] = useState([]);
-  // const [inputs, onChange] = useContext(FormContext);
-
   return (
     <div className="information__category">
       <ul className="information__category__list-area">

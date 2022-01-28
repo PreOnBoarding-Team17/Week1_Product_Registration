@@ -6,7 +6,6 @@ import "Components/ProductInformation/scss/ProductFilterTag.scss";
 
 function ProductFilterTag({ filterTag, setFilterTag }) {
   const [toggleSearch, setToggleSearch] = useState(false);
-  // const [filterTag, setFilterTag] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
@@ -29,7 +28,6 @@ function ProductFilterTag({ filterTag, setFilterTag }) {
           onFocus={() => setToggleSearch(true)}
           value={searchInput}
           onChange={onChangeFilterInput}
-          // onBlur={() => setToggleSearch(false)}
         />
         <button className="filter-tag__btn">검색</button>
       </div>
