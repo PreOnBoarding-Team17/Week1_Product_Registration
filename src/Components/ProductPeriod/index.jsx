@@ -13,13 +13,18 @@ function ProductPeriod() {
       <div className="menu">
         <div className="left-menu">상품 노출 기한</div>
         <div className="right-menu">
-          <PrductPeriodContainer period={EXPOSEPERIOD} dateType="date" />
+          <PrductPeriodContainer
+            name="productExposure"
+            period={EXPOSEPERIOD}
+            dateType="date"
+          />
         </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 판매 기한</div>
         <div className="right-menu">
           <PrductPeriodContainer
+            name="productSales"
             period={SALESPERIOD}
             dateType="datetime-local"
           />
