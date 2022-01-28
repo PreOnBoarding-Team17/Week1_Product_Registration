@@ -1,12 +1,30 @@
-.double-text {
-  line-height: 1.15;
-}
-.shipping-time {
-  margin-top: 2.5vh;
+.product-shipping-setting-container {
+  .double-text {
+    line-height: 1.15;
+  }
+  .shipping-time {
+    margin-top: 2.5vh;
 
-  &--detail {
-    margin-bottom: 2vh;
-    display: flex;
-    align-items: center;
+    &--detail {
+      height: 48px;
+      margin-bottom: 2vh;
+      display: flex;
+      align-items: center;
+
+      &__datetime {
+        margin: 0 16px;
+      }
+      &__date {
+        width: 160px;
+      }
+    }
+  }
+
+  .toggle-contain {
+    padding-left: 36px;
+  }
+
+  .border-top-none {
+    border-style: none none none none;
   }
 }
