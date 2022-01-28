@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteButton from "Utils/Button/DeleteButton";
-import ProductExtraOption from "Components/ProductOption/ProductExtraOption";
+import ProductOptionList from "Components/ProductOption/ProductOptionList";
 import "Components/ProductOption/scss/ProductOptionSet.scss";
 import ProductOptionImage from "./ProductOptionImage";
 
@@ -12,7 +12,7 @@ export default function ProductOptionSet() {
       </div>
       <div className="option-set__wrapper">
         <ProductOptionImage />
-        <ProductExtraOption />
+        <ProductOptionList />
         <button className="option-set__add-button">+ 옵션 추가</button>
       </div>
     </section>

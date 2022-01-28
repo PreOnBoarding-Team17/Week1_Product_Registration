@@ -1,14 +1,14 @@
-.extra-option__container {
+.option-list__container {
   margin: 0 10px 10px 10px;
   background-color: white;
   border-radius: 5px;
   border: 1px solid #e3e3e3;
-  .extra-option__box {
+  .option-list__box {
     height: 60px;
     display: flex;
     padding: 0 10px;
     align-items: center;
-    .extra-option__delete {
+    .option-list__delete {
       padding: 7px 15px;
       border: 1px solid #e04748;
       color: #e04748;
@@ -21,7 +21,7 @@
         font-weight: 700;
       }
     }
-    .extra-option__input {
+    .option-list__input {
       padding: 12px 0 15px 20px;
       border: 1px solid #e3e3e3;
       border-radius: 5px;
@@ -31,7 +31,7 @@
         color: darkgray;
       }
     }
-    .extra-option__element {
+    .option-list__element {
       display: flex;
       align-items: center;
       margin-right: 20px;
@@ -39,13 +39,13 @@
         margin-left: 10px;
       }
     }
-    .extra-option__select {
+    .option-list__select {
       padding: 15px 30px 15px 5px;
       border: 1px solid #e3e3e3;
       border-radius: 5px;
       cursor: pointer;
     }
-    .extra-option__connect {
+    .option-list__connect {
       width: 20px;
       height: 20px;
       margin: 0 20px 15px 20px;
@@ -53,7 +53,7 @@
       border-left: 1px solid darkgray;
       border-bottom: 1px solid darkgray;
     }
-    .extra-option__add {
+    .option-list__add {
       padding: 0;
       border: none;
       cursor: pointer;
@@ -67,7 +67,7 @@
           font-weight: 600;
         }
       }
-      .extra-option__add-plus {
+      .option-list__add-plus {
         margin: 0 5px 3px 0;
         padding: 3px 7px;
         border: 1px solid #e3e3e3;
