@@ -1,9 +1,11 @@
 import React from "react";
 
+import "Components/ProductNotice/scss/ProductNoticeInput.scss";
+
 function ProductNoticeInput({ option }) {
   return (
-    <div>
-      {option} <input />
+    <div className="product-notice-input-container">
+      {option[0]} <input placeholder={option[1]} />
     </div>
   );
 }
