@@ -1,0 +1,42 @@
+.product-image-uploader {
+  display: flex;
+  &__input {
+    display: none;
+  }
+  &__button {
+    width: 200px;
+    height: 45px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 15px;
+    margin: 8px 24px 0 10px;
+    cursor: pointer;
+  }
+
+  &-info {
+    &-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1vh;
+
+      &__file {
+        font-size: 15px;
+      }
+
+      &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        border: 1px solid #eaeaea;
+        border-radius: 50%;
+        background-color: white;
+        margin-left: 10px;
+        color: #666;
+        cursor: pointer;
+      }
+    }
+  }
+}

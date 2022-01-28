@@ -1,0 +1,10 @@
+input[type="date"],
+input[type="datetime-local"] {
+  min-width: 230px;
+  height: 36px;
+  text-align: center;
+  font-weight: 700;
+  border: 2px solid #efefef;
+  border-radius: 6px;
+  margin: 0 1vw;
+}
