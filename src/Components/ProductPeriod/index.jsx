@@ -1,5 +1,5 @@
 import React from "react";
-import PrductPeriodContainer from "./PrductPeriodContainer";
+import PrductPeriodContainer from "Components/ProductPeriod/PrductPeriodContainer";
 
 import "Utils/Styles/date.scss";
 
