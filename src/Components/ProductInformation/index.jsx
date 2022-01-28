@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductCategory from "Components/ProductInformation/ProductCategory";
 import ProductFilterTag from "./ProductFilterTag";
 import ProductName from "./ProductName";
 import ProductCompsitionInfo from "./ProductCompsitionInfo";
 import "Components/ProductInformation/scss/ProductInformation.scss";
+import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploader";
+import { FormContext } from "FormContextAPI/FormContextAPI";
 
 function ProductInformation() {
   let uniqueCode = Math.floor(Math.random() * 1e8);
+  const context = useContext(FormContext).filesData;
+  const inputs = context.state;
+  const onFileChange = context.setState;
 
   return (
     <section className="gray-box information__container">
@@ -41,11 +46,24 @@ function ProductInformation() {
       </div>
       <div className="menu">
         <div className="left-menu">상품 썸네일</div>
-        <div className="right-menu"></div>
+        <div className="right-menu">
+          <ProductImageUploader
+            name="productThumnailImage"
+            files={inputs.productThumnailImage}
+            isSingular={true}
+            onChange={onFileChange}
+          />
+        </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 대표 이미지</div>
-        <div className="right-menu"></div>
+        <div className="right-menu">
+          <ProductImageUploader
+            name="productMainImages"
+            files={inputs.productMainImages}
+            onChange={onFileChange}
+          />
+        </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 총 재고 *</div>

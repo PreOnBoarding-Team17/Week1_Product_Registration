@@ -3,12 +3,17 @@ import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploa
 
 import "Components/ProductRecommendImage/scss/ProductImageContainer.scss";
 
-function ProductImageContainer({ title }) {
+function ProductImageContainer({ title, name, files, onChange, isSingular }) {
   return (
     <section className="gray-box">
       <div className="title">{title}</div>
       <div className="menu img-place">
-        <ProductImageUploader />
+        <ProductImageUploader
+          name={name}
+          files={files}
+          isSingular={isSingular}
+          onChange={onChange}
+        />
       </div>
     </section>
   );
