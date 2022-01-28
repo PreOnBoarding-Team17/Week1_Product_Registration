@@ -13,6 +13,7 @@ export default function ProductOptionSet() {
       <div className="option-set__wrapper">
         <ProductOptionImage />
         <ProductExtraOption />
+        <button className="option-set__add-button">+ 옵션 추가</button>
       </div>
     </section>
   );
