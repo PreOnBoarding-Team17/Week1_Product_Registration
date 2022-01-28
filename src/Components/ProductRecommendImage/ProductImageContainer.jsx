@@ -6,7 +6,7 @@ import "Components/ProductRecommendImage/scss/ProductImageContainer.scss";
 function ProductImageContainer({ title }) {
   return (
     <section className="gray-box">
-      <div className="title">{title}</div>
+      <div className="img__title">{title}</div>
       <div className="menu img-place">
         <ProductImageUploader />
       </div>
