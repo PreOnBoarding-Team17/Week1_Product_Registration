@@ -23,11 +23,11 @@ function ProductInformation() {
       </div>
       <div className="menu">
         <div className="left-menu">상품명 *</div>
-        <div className="right-menu name-menu">
+        <div className="name-menu">
           <ProductName />
         </div>
         <div className="left-menu">상품 코드</div>
-        <div className="right-menu name-menu">code</div>
+        <div className="name-menu">code</div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 구성 소개 정보 *</div>

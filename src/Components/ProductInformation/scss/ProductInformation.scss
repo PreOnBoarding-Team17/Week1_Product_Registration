@@ -5,6 +5,9 @@ input:focus {
 .name-menu {
   margin: 0;
   width: calc(70% / 2);
+  padding: 1.5rem 0.8rem;
+  border: 1px solid #e3e3e3;
+  box-sizing: border-box;
 }
 
 .product-input__container {
