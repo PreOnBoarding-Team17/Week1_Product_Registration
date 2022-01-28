@@ -7,7 +7,7 @@ function ProductFilterTag() {
       <input
         type="text"
         className="filter-tag__input"
-        placeholder="필터태그를 검색해 주세요"
+        placeholder="필터태그를 검색해 주세요."
       />
       <button className="filter-tag__btn">검색</button>
     </div>
