@@ -31,7 +31,7 @@ export default function ProductOptionSet({ optionSet, onClick }) {
           </section>
         ))
       ) : (
-        <div>
+        <div className="option-set__empty">
           <p>옵션세트를 추가하여 옵션을 구성해 주세요.</p>
         </div>
       )}
