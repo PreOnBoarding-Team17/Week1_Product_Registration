@@ -14,35 +14,44 @@ function FormContentAPI({ children }) {
     productSales: 0,
     productSalesDateFrom: "",
     productSalesDateTo: "",
-    shippingDate: false,
-    pickUpVisit: false,
-    reservedShipping: false,
+    shippingDate: "false",
+    pickUpVisit: "false",
+    reservedShipping: "true",
     orderTimeFrom: "",
     orderTimeTo: "",
     dawnShipping: "",
     normalShipping: "",
-    mileage: false,
-    thanks: false,
+    mileage: "true",
+    thanks: "false",
   });
 
   // <input name=자기가 선언한 변수명 value={inputs.자기가 선언한 변수명}/>
 
   const onChange = (e) => {
     let { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+    let copy = { ...inputs };
 
     if (value === `true`) {
-      value = false;
+      copy[name] = "false";
     } else if (value === `false`) {
-      value = true;
+      copy[name] = "true";
+
+      if (name === "shippingDate" || name === "pickUpVisit") {
+        copy["reservedShipping"] = "false";
+      } else if (name === "reservedShipping") {
+        copy["shippingDate"] = "false";
+        copy["pickUpVisit"] = "false";
+      }
+    } else {
+      copy[name] = value;
     }
 
-    setInputs({
-      ...inputs, // 기존의 input 객체를 복사한 뒤
-      [name]: value, // name 키를 가진 값을 value 로 설정
-    });
+    setInputs({ ...copy });
   };
 
   useEffect(() => {
+    //inputs 바뀌고 즉시 검사할꺼 있으면 여기
+
     console.log(inputs);
   }, [inputs]);
 
