@@ -3,7 +3,7 @@ import Header from "Components/Common/Header";
 import ProductPeriod from "Components/ProductPeriod";
 import ProductInformation from "Components/ProductInformation";
 import ProductOption from "Components/ProductOption";
-import ProductRecommendImage from "Components/ProductRecommendImage";
+import ProductImageUpload from "Components/ProductImageUpload";
 import ProductNotice from "Components/ProductNotice";
 import ProductShippingSetting from "Components/ProductShippingSetting";
 
@@ -14,7 +14,7 @@ function ProductRegister() {
       <ProductPeriod />
       <ProductInformation />
       <ProductOption />
-      <ProductRecommendImage />
+      <ProductImageUpload />
       <ProductNotice />
       <ProductShippingSetting />
     </form>

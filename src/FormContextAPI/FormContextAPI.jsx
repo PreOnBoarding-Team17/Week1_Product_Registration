@@ -99,8 +99,6 @@ function FormContentAPI({ children }) {
     productName: "",
     productCode: (Math.random() * 1e12).toString(36).substring(0, 8),
     productComposition: "",
-    productthumbnail: [],
-    productMainImage: [],
     totalProduct: 0,
   });
 
@@ -146,10 +144,14 @@ function FormContentAPI({ children }) {
   useEffect(() => {
     console.log(data);
 <<<<<<< HEAD
+<<<<<<< HEAD
   }, [inputs, option]);
 =======
   }, [data]);
 >>>>>>> feb2f87ea7f8005720f6ee9eb44f9a5d55e7d126
+=======
+  }, [inputs, infoData, images]);
+>>>>>>> fd0eda1e8522251f6b2021f4f4e5248677fa14c2
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }
