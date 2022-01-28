@@ -5,14 +5,10 @@ function CategoryItem({ category, index, selected, setSelected }) {
   const handleCheckboxChange = (e) => {
     const { checked } = e.target;
     if (checked) {
-      selected.add(index);
-      setSelected(selected);
-    } else if (!checked && selected.has(index)) {
-      selected.delete(index);
-      setSelected(selected);
+      setSelected([...selected, index].sort((a, b) => +a - +b));
+    } else if (!checked) {
+      setSelected(selected.filter((s) => s !== index));
     }
-
-    console.log([...selected]);
   };
 
   return (
