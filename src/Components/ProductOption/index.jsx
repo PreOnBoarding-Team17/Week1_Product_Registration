@@ -4,7 +4,8 @@ import ProductOptionSet from "Components/ProductOption/ProductOptionSet";
 import "Components/ProductOption/scss/ProductOption.scss";
 
 export default function ProductOption() {
-  const [optionSet, setOptionSet] = useState([0]);
+  const [optionSet, setOptionSet] = useState([]);
+
   return (
     <section className="gray-box">
       <div className="option__title-box">

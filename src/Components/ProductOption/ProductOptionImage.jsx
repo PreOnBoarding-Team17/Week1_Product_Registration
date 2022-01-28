@@ -4,7 +4,7 @@ import "Components/ProductOption/scss/ProductOptionImage.scss";
 export default function ProductOptionImage({ number }) {
   const [image, setImage] = useState([]);
   const inputRef = useRef(null);
-  console.log(image);
+
   const handleAddImage = (event) => {
     if (event.target.files) {
       const reader = new FileReader();
