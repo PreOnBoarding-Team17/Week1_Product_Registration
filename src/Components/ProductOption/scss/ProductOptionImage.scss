@@ -6,6 +6,11 @@
   align-items: center;
   background-color: #eeeeee;
   border: 1px solid #e3e3e3;
+  .option-image__preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
   .option-image__input-box {
     .option-image__input {
       display: none;
