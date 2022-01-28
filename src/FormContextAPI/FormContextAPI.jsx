@@ -23,6 +23,7 @@ function FormContentAPI({ children }) {
   });
   //state는 예시 입니다.
   const [state, setState] = useState("state");
+  const [option, setOption] = useState([]);
 
   const onChange = (e) => {
     let { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
@@ -55,12 +56,16 @@ function FormContentAPI({ children }) {
       state: state,
       setState: setState,
     },
+    optionData: {
+      state: option,
+      setState: setOption,
+    },
   };
 
   useEffect(() => {
     //inputs 바뀌고 즉시 검사할꺼 있으면 여기
     console.log(data);
-  }, [inputs]);
+  }, [inputs, option]);
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }
