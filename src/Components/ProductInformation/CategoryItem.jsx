@@ -19,6 +19,7 @@ function CategoryItem({ category, index, selected, setSelected }) {
           id={`category${index}`}
           className="check-input"
           onChange={handleCheckboxChange}
+          checked={selected.includes(index)}
         />
         <span className="custom-checkbox" htmlFor={`category${index}`}></span>
         <span className="custom-checkbox__title">{category}</span>
