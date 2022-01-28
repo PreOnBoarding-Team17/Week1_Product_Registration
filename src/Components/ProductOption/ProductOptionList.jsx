@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteButton from "Utils/Button/DeleteButton";
+import { handleAddOption, handleDeleteOption } from "Utils/OptionSetting";
 import ProductExtraOption from "Components/ProductOption/ProductExtraOption";
 import "Components/ProductOption/scss/ProductOptionList.scss";
 
 export default function ProductOptionList() {
+  const [extraOption, setExtraOption] = useState([]);
+
   return (
     <section className="option-list__container">
       <article className="option-list__box flex-end">
@@ -49,9 +52,15 @@ export default function ProductOptionList() {
           <option value="과세">과세</option>
         </select>
       </article>
-      <ProductExtraOption />
+      <ProductExtraOption
+        extraOption={extraOption}
+        onClick={() => handleDeleteOption(setExtraOption)}
+      />
       <article className="option-list__box">
-        <button className="option-list__add">
+        <button
+          className="option-list__add"
+          onClick={() => handleAddOption(extraOption, setExtraOption)}
+        >
           <p className="option-list__add-plus">+</p>
           <p>추가 옵션 상품 추가</p>
         </button>
