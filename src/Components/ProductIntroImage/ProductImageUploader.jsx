@@ -1,10 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "Components/ProductIntroImage/scss/ProductImageUploader.scss";
 
 const ProductImageUploader = () => {
   const [files, setFiles] = useState([]);
 
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    console.log(files);
+  }, [files]);
 
   const handleClick = () => {
     inputRef.current.click();
@@ -37,7 +41,11 @@ const ProductImageUploader = () => {
         className="product-image-uploader__input"
         ref={inputRef}
       />
-      <button className="product-image-uploader__button" onClick={handleClick}>
+      <button
+        type="button"
+        className="product-image-uploader__button"
+        onClick={handleClick}
+      >
         + 이미지 첨부
       </button>
       <div className="product-image-uploader-info">
