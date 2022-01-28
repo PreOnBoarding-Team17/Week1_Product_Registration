@@ -2,18 +2,22 @@ import React, { useContext } from "react";
 import { FormContext } from "FormContextAPI/FormContextAPI";
 
 import ProductExtraSetting from "Components/ProductShippingSetting/ProductExtraSetting";
+
 import Toggle from "Utils/Toggle/Toggle";
 
-import "Components/ProductShippingSetting/scss/ProductShippingSetting.scss";
 import "Utils/Styles/date.scss";
+import "Components/ProductShippingSetting/scss/ProductShippingSetting.scss";
 
 const EXTRASETTING_1 = ["상품 혜택 허용 설정", "마일리지 적립"];
 const EXTRASETTING_2 = ["기타 설정", "감사카드 설정"];
 
 function ProductShippingSetting() {
-  const context = useContext(FormContext).inputsData;
-  const inputs = context.state;
-  const onChange = context.setState;
+  const context = useContext(FormContext).datesData;
+  const dates = context.state;
+  const onDatesChange = context.setState;
+
+  const context2 = useContext(FormContext).togglesData;
+  const toggles = context2.state;
 
   return (
     <div className="product-shipping-setting-container">
@@ -26,22 +30,14 @@ function ProductShippingSetting() {
             출발일 지정
           </div>
           <div className="right-menu toggle-contain">
-            <Toggle
-              name="shippingDate"
-              value={inputs["shippingDate"]}
-              onChange={onChange}
-            />
+            <Toggle name="shippingDate" />
           </div>
         </div>
 
         <div className="menu border-top-none">
           <div className="left-menu double-text">방문 수령</div>
           <div className="right-menu toggle-contain">
-            <Toggle
-              name="pickUpVisit"
-              value={inputs["pickUpVisit"]}
-              onChange={onChange}
-            />
+            <Toggle name="pickUpVisit" />
           </div>
         </div>
 
@@ -52,13 +48,9 @@ function ProductShippingSetting() {
             예약배송
           </div>
           <div className="right-menu toggle-contain">
-            <Toggle
-              name="reservedShipping"
-              value={inputs["reservedShipping"]}
-              onChange={onChange}
-            />
+            <Toggle name="reservedShipping" />
 
-            {inputs["reservedShipping"] === "true" && (
+            {toggles["reservedShipping"] === "true" && (
               <div className="shipping-time">
                 <div className="shipping-time--detail">
                   주문 시간
@@ -66,16 +58,16 @@ function ProductShippingSetting() {
                     type="datetime-local"
                     className="shipping-time--detail__datetime"
                     name="orderTimeFrom"
-                    value={inputs["orderTimeFrom"]}
-                    onChange={onChange}
+                    value={dates["orderTimeFrom"]}
+                    onChange={onDatesChange}
                   />
                   ~
                   <input
                     type="datetime-local"
                     className="shipping-time--detail__datetime"
                     name="orderTimeTo"
-                    value={inputs["orderTimeTo"]}
-                    onChange={onChange}
+                    value={dates["orderTimeTo"]}
+                    onChange={onDatesChange}
                   />
                 </div>
                 <div className="shipping-time--detail">
@@ -85,8 +77,8 @@ function ProductShippingSetting() {
                       type="date"
                       className="shipping-time--detail__datetime shipping-time--detail__date"
                       name="dawnShipping"
-                      value={inputs["dawnShipping"]}
-                      onChange={onChange}
+                      value={dates["dawnShipping"]}
+                      onChange={onDatesChange}
                     />
                   </div>
                   <div>
@@ -95,8 +87,8 @@ function ProductShippingSetting() {
                       type="date"
                       className="shipping-time--detail__datetime shipping-time--detail__date"
                       name="normalShipping"
-                      value={inputs["normalShipping"]}
-                      onChange={onChange}
+                      value={dates["normalShipping"]}
+                      onChange={onDatesChange}
                     />
                   </div>
                 </div>
@@ -110,15 +102,11 @@ function ProductShippingSetting() {
         title={EXTRASETTING_1[0]}
         option={EXTRASETTING_1[1]}
         name="mileage"
-        value={inputs["mileage"]}
-        onChange={onChange}
       />
       <ProductExtraSetting
         title={EXTRASETTING_2[0]}
         option={EXTRASETTING_2[1]}
         name="thanks"
-        value={inputs["thanks"]}
-        onChange={onChange}
       />
     </div>
   );

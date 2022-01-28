@@ -4,20 +4,25 @@ const FormContext = createContext();
 
 function FormContentAPI({ children }) {
   const [inputs, setInputs] = useState({
-    //자신이 쓸 변수들 `name : 초기값`이 형식으로 선언
     productExposure: 0,
+    productSales: 0,
+  });
+
+  const [dates, setDates] = useState({
     productExposureDateFrom: "",
     productExposureDateTo: "",
-    productSales: 0,
     productSalesDateFrom: "",
     productSalesDateTo: "",
-    shippingDate: "false",
-    pickUpVisit: "false",
-    reservedShipping: "true",
     orderTimeFrom: "",
     orderTimeTo: "",
     dawnShipping: "",
     normalShipping: "",
+  });
+
+  const [toggles, setToggles] = useState({
+    shippingDate: "false",
+    pickUpVisit: "false",
+    reservedShipping: "true",
     mileage: "true",
     thanks: "false",
   });
@@ -29,29 +34,57 @@ function FormContentAPI({ children }) {
     productMainImages: [],
   });
 
-  //state는 예시 입니다.
-  const [state, setState] = useState("state");
-
   const onChange = (e) => {
-    let { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
+    let { value, name } = e.target;
     let copy = { ...inputs };
+    copy[name] = value;
+
+    setInputs({ ...copy });
+  };
+
+  const onDatesChange = (e) => {
+    let { value, name } = e.target;
+    let copy = { ...dates };
+
+    if (name === "dawnShipping" || name === "normalShipping") {
+      const timeOrderFrom = Date.parse(dates[`orderTimeFrom`]);
+      const timeOrderTo = Date.parse(dates[`orderTimeFrom`]);
+      const dateShipping = Date.parse(value);
+      console.log(timeOrderFrom, timeOrderTo, dateShipping);
+
+      if (!isNaN(copy["orderTimeFrom"]) || !isNaN(copy["orderTimeTo"])) {
+        alert("주문시간 먼저 작성하세요");
+      } else if (
+        dateShipping - timeOrderFrom < 0 ||
+        timeOrderTo - timeOrderTo < 0
+      ) {
+        alert("주문시간 이후로 출고일을 지정해주세요.");
+      }
+    }
+
+    copy[name] = value;
+    setDates({ ...copy });
+  };
+
+  const onToggle = (e) => {
+    let { value, name } = e.target;
+    let copy = { ...toggles };
 
     if (value === `true`) {
       copy[name] = "false";
-    } else if (value === `false`) {
+    } else {
       copy[name] = "true";
 
-      if (name === "shippingDate" || name === "pickUpVisit") {
-        copy["reservedShipping"] = "false";
-      } else if (name === "reservedShipping") {
+      if (name === "reservedShipping") {
         copy["shippingDate"] = "false";
         copy["pickUpVisit"] = "false";
+      } else if (name === "shippingDate" || name === "pickUpVisit") {
+        copy["reservedShipping"] = "false";
+        console.log(copy);
       }
-    } else {
-      copy[name] = value;
     }
 
-    setInputs({ ...copy });
+    setToggles({ ...copy });
   };
 
   const [infoData, setInfoData] = useState({
@@ -80,15 +113,17 @@ function FormContentAPI({ children }) {
       state: inputs,
       setState: onChange,
     },
-
+    togglesData: {
+      state: toggles,
+      setState: onToggle,
+    },
+    datesData: {
+      state: dates,
+      setState: onDatesChange,
+    },
     filesData: {
       state: images,
       setState: onFileChange,
-    },
-
-    stateData: {
-      state: state,
-      setState: setState,
     },
     informationData: {
       state: infoData,
@@ -97,7 +132,6 @@ function FormContentAPI({ children }) {
   };
 
   useEffect(() => {
-    //inputs 바뀌고 즉시 검사할꺼 있으면 여기
     console.log(data);
   }, [inputs, infoData, images]);
 
