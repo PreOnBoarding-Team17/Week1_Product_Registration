@@ -56,7 +56,7 @@ function ProductShippingSetting() {
               onChange={onChange}
             />
 
-            {inputs["reservedShipping"] === true && (
+            {inputs["reservedShipping"] === "true" && (
               <div className="shipping-time">
                 <div className="shipping-time--detail">
                   주문 시간

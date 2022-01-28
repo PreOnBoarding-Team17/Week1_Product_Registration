@@ -36,21 +36,23 @@ function PrductPeriodContainer({ name, period, dateType }) {
           </label>
         ))}
       </div>
-      <div className="product-period-container__input--date">
-        <input
-          type={dateType}
-          name={`${name}DateFrom`}
-          value={inputs[`${name}DateFrom`]}
-          onChange={onChange}
-        />
-        <div className="date-middle">~</div>
-        <input
-          type={dateType}
-          name={`${name}DateTo`}
-          value={inputs[`${name}DateTo`]}
-          onChange={onChange}
-        />
-      </div>
+      {inputs[name] === "2" && (
+        <div className="product-period-container__input--date">
+          <input
+            type={dateType}
+            name={`${name}DateFrom`}
+            value={inputs[`${name}DateFrom`]}
+            onChange={onChange}
+          />
+          <div className="date-middle">~</div>
+          <input
+            type={dateType}
+            name={`${name}DateTo`}
+            value={inputs[`${name}DateTo`]}
+            onChange={onChange}
+          />
+        </div>
+      )}
     </div>
   );
 }
