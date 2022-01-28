@@ -1,11 +1,12 @@
 import React from "react";
+import DeleteButton from "Utils/Button/DeleteButton";
 import "Components/ProductOption/scss/ProductExtraOption.scss";
 
 export default function ProductExtraOption() {
   return (
     <section className="extra-option__container">
       <article className="extra-option__box flex-end">
-        <button className="extra-option__delete">삭제</button>
+        <DeleteButton />
       </article>
       <article className="extra-option__box">
         <input
@@ -49,20 +50,22 @@ export default function ProductExtraOption() {
       </article>
       <article className="extra-option__box">
         <div className="extra-option__connect"></div>
-        <input
-          className="extra-option__input mid"
-          type="text"
-          placeholder="추가 옵션명 (필수)"
-        />
         <div className="extra-option__element mid">
           <input
-            className="extra-option__input long"
+            className="extra-option__input"
+            type="text"
+            placeholder="추가 옵션명 (필수)"
+          />
+        </div>
+        <div className="extra-option__element mid">
+          <input
+            className="extra-option__input"
             type="number"
             placeholder="추가 옵션 정상가 (필수)"
           />
           <p>원</p>
         </div>
-        <button className="extra-option__delete">삭제</button>
+        <DeleteButton />
       </article>
       <article className="extra-option__box">
         <button className="extra-option__add">
