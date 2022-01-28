@@ -1,0 +1,15 @@
+.double-text {
+  line-height: 1.15;
+}
+.shipping-time {
+  margin-top: 2.5vh;
+
+  .shipping-time--detail {
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
+  }
+}
+.shipping-time--detail {
+  display: flex;
+}
