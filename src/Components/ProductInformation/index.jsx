@@ -6,6 +6,8 @@ import ProductCompsitionInfo from "./ProductCompsitionInfo";
 import "Components/ProductInformation/scss/ProductInformation.scss";
 
 function ProductInformation() {
+  let uniqueCode = Math.floor(Math.random() * 1e8);
+
   return (
     <section className="gray-box information__container">
       <div className="title">상품 기본 정보</div>
@@ -27,7 +29,9 @@ function ProductInformation() {
           <ProductName />
         </div>
         <div className="left-menu">상품 코드</div>
-        <div className="name-menu">code</div>
+        <div className="name-menu">
+          <span className="name-menu__unique-code">{uniqueCode}</span>
+        </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 구성 소개 정보 *</div>
