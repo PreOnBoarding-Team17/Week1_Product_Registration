@@ -1,5 +1,6 @@
 .product-image-uploader {
   display: flex;
+  align-items: center;
   &__input {
     display: none;
   }
@@ -10,15 +11,24 @@
     border-radius: 5px;
     background-color: white;
     font-size: 15px;
-    margin: 8px 24px 0 10px;
+    margin: 0 24px 0 10px;
     cursor: pointer;
   }
 
   &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     &-box {
       display: flex;
       align-items: center;
+      justify-content: center;
       margin-bottom: 1vh;
+
+      &:last-child {
+        margin: 0;
+      }
 
       &__file {
         font-size: 15px;
