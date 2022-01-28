@@ -1,17 +1,21 @@
 import React, { useContext } from "react";
+import { FormContext } from "FormContextAPI/FormContextAPI";
 import ProductCategory from "Components/ProductInformation/ProductCategory";
 import ProductFilterTag from "./ProductFilterTag";
 import ProductName from "./ProductName";
-import ProductCompsitionInfo from "./ProductCompsitionInfo";
+import ProductCompositionInfo from "./ProductCompositionInfo";
 import "Components/ProductInformation/scss/ProductInformation.scss";
 import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploader";
 import { FormContext } from "FormContextAPI/FormContextAPI";
 
 function ProductInformation() {
-  let uniqueCode = Math.floor(Math.random() * 1e8);
-  const context = useContext(FormContext).filesData;
-  const inputs = context.state;
-  const onFileChange = context.setState;
+  const context = useContext(FormContext).informationData;
+  const infoData = context.state;
+  const onChangeInfoData = context.setState;
+ 
+  const fileContext = useContext(FormContext).filesData;
+  const inputs = fileContext.state;
+  const onFileChange = fileContext.setState;
 
   return (
     <section className="gray-box information__container">
@@ -19,29 +23,43 @@ function ProductInformation() {
       <div className="menu">
         <div className="left-menu">카테고리 *</div>
         <div className="right-menu">
-          <ProductCategory />
+          <ProductCategory
+            value={infoData["category"]}
+            onChange={onChangeInfoData}
+          />
         </div>
       </div>
       <div className="menu">
         <div className="left-menu">필터 태그</div>
         <div className="right-menu">
-          <ProductFilterTag />
+          <ProductFilterTag
+            filterTag={infoData["filterTag"]}
+            setFilterTag={onChangeInfoData}
+          />
         </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품명 *</div>
         <div className="name-menu">
-          <ProductName />
+          <ProductName
+            value={infoData["productName"]}
+            onChange={onChangeInfoData}
+          />
         </div>
         <div className="left-menu">상품 코드</div>
         <div className="name-menu">
-          <span className="name-menu__unique-code">{uniqueCode}</span>
+          <span className="name-menu__unique-code">
+            {infoData["productCode"]}
+          </span>
         </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 구성 소개 정보 *</div>
         <div className="right-menu">
-          <ProductCompsitionInfo />
+          <ProductCompositionInfo
+            value={infoData["productComposition"]}
+            onChange={onChangeInfoData}
+          />
         </div>
       </div>
       <div className="menu">
@@ -67,7 +85,7 @@ function ProductInformation() {
       </div>
       <div className="menu">
         <div className="left-menu">상품 총 재고 *</div>
-        <div className="right-menu">00개</div>
+        <div className="right-menu">{infoData["totalProduct"]}개</div>
       </div>
     </section>
   );

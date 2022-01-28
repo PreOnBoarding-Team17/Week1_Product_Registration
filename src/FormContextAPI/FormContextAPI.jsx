@@ -20,17 +20,15 @@ function FormContentAPI({ children }) {
     normalShipping: "",
     mileage: "true",
     thanks: "false",
-    productIntroImages: [],
-    productRecommendImages: [],
-    productThumnailImage: [],
-    productMainImages: [],
   });
+  
   const [images, setImages] = useState({
     productIntroImages: [],
     productRecommendImages: [],
     productThumnailImage: [],
     productMainImages: [],
   });
+  
   //state는 예시 입니다.
   const [state, setState] = useState("state");
 
@@ -56,6 +54,23 @@ function FormContentAPI({ children }) {
     setInputs({ ...copy });
   };
 
+  const [infoData, setInfoData] = useState({
+    category: [],
+    filterTag: [],
+    productName: "",
+    productCode: (Math.random() * 1e12).toString(36).substring(0, 8),
+    productComposition: "",
+    productthumbnail: [],
+    productMainImage: [],
+    totalProduct: 0,
+  });
+
+  const onChangeInfoData = (name, newData) => {
+    const copy = { ...infoData };
+    copy[name] = newData;
+    setInfoData({ ...copy });
+  };
+  
   const onFileChange = (e, value) => {
     let { name } = e.target;
 
@@ -77,12 +92,16 @@ function FormContentAPI({ children }) {
       state: state,
       setState: setState,
     },
+    informationData: {
+      state: infoData,
+      setState: onChangeInfoData,
+    },
   };
 
   useEffect(() => {
     //inputs 바뀌고 즉시 검사할꺼 있으면 여기
     console.log(data);
-  }, [inputs]);
+  }, [inputs, infoData]);
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }
