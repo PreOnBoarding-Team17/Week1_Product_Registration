@@ -1,9 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "Components/ProductIntroImage/scss/ProductImageUploader.scss";
 
-const ProductImageUploader = () => {
-  const [files, setFiles] = useState([]);
-
+const ProductImageUploader = ({ name, files, onChange, isSingular }) => {
   const inputRef = useRef(null);
 
   const handleClick = () => {
@@ -12,20 +10,26 @@ const ProductImageUploader = () => {
   };
 
   const handleFile = (e) => {
+    if (isSingular) {
+      onChange(e, [e.target.files[0]]);
+      return;
+    }
+
     const isSame = files.filter(
       (item) => item.lastModified === e.target.files[0].lastModified
     );
     if (isSame.length > 0) {
       return;
     }
-    setFiles((prev) => [e.target.files[0], ...prev]);
+
+    onChange(e, [e.target.files[0], ...files]);
   };
 
   const handleDelete = (e) => {
     const newFiles = files.filter(
       (item) => item.lastModified !== Number(e.target.id)
     );
-    setFiles(newFiles);
+    onChange(e, newFiles);
   };
 
   return (
@@ -36,8 +40,13 @@ const ProductImageUploader = () => {
         onChange={handleFile}
         className="product-image-uploader__input"
         ref={inputRef}
+        name={name}
       />
-      <button className="product-image-uploader__button" onClick={handleClick}>
+      <button
+        type="button"
+        className="product-image-uploader__button"
+        onClick={handleClick}
+      >
         + 이미지 첨부
       </button>
       <div className="product-image-uploader-info">
@@ -51,9 +60,11 @@ const ProductImageUploader = () => {
                 {item.name}
               </p>
               <button
+                type="button"
                 className="product-image-uploader-info-box__button"
                 id={item.lastModified}
                 onClick={handleDelete}
+                name={name}
               >
                 X
               </button>

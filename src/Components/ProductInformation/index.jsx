@@ -5,13 +5,17 @@ import ProductFilterTag from "./ProductFilterTag";
 import ProductName from "./ProductName";
 import ProductCompositionInfo from "./ProductCompositionInfo";
 import "Components/ProductInformation/scss/ProductInformation.scss";
-
-// const uniqueCode = (Math.random() * 1e12).toString(36).substring(0, 8);
+import ProductImageUploader from "Components/ProductIntroImage/ProductImageUploader";
+import { FormContext } from "FormContextAPI/FormContextAPI";
 
 function ProductInformation() {
   const context = useContext(FormContext).informationData;
   const infoData = context.state;
   const onChangeInfoData = context.setState;
+ 
+  const fileContext = useContext(FormContext).filesData;
+  const inputs = fileContext.state;
+  const onFileChange = fileContext.setState;
 
   return (
     <section className="gray-box information__container">
@@ -60,11 +64,24 @@ function ProductInformation() {
       </div>
       <div className="menu">
         <div className="left-menu">상품 썸네일</div>
-        <div className="right-menu"></div>
+        <div className="right-menu">
+          <ProductImageUploader
+            name="productThumnailImage"
+            files={inputs.productThumnailImage}
+            isSingular={true}
+            onChange={onFileChange}
+          />
+        </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 대표 이미지</div>
-        <div className="right-menu"></div>
+        <div className="right-menu">
+          <ProductImageUploader
+            name="productMainImages"
+            files={inputs.productMainImages}
+            onChange={onFileChange}
+          />
+        </div>
       </div>
       <div className="menu">
         <div className="left-menu">상품 총 재고 *</div>

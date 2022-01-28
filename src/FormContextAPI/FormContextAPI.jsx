@@ -21,6 +21,14 @@ function FormContentAPI({ children }) {
     mileage: "true",
     thanks: "false",
   });
+  
+  const [images, setImages] = useState({
+    productIntroImages: [],
+    productRecommendImages: [],
+    productThumnailImage: [],
+    productMainImages: [],
+  });
+  
   //state는 예시 입니다.
   const [state, setState] = useState("state");
 
@@ -62,12 +70,24 @@ function FormContentAPI({ children }) {
     copy[name] = newData;
     setInfoData({ ...copy });
   };
+  
+  const onFileChange = (e, value) => {
+    let { name } = e.target;
+
+    setImages({ ...images, [name]: value });
+  };
 
   const data = {
     inputsData: {
       state: inputs,
       setState: onChange,
     },
+
+    filesData: {
+      state: images,
+      setState: onFileChange,
+    },
+
     stateData: {
       state: state,
       setState: setState,
