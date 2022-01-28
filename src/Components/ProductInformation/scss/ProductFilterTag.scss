@@ -1,0 +1,28 @@
+.filter-tag__container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0.5rem;
+  color: #000;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e3e3e3;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+
+  .filter-tag__input {
+    width: 80%;
+    border: none;
+    font-size: 1.1rem;
+  }
+  .filter-tag__btn {
+    width: 100px;
+    height: 40px;
+    font-size: 1.1rem;
+    background-color: white;
+    border: 1px solid #3e3874;
+    border-radius: 0.4rem;
+  }
+}

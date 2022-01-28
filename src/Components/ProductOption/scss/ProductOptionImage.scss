@@ -1,0 +1,27 @@
+.option-image__container {
+  height: 300px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  border: 1px solid #e3e3e3;
+  .option-image__input-box {
+    .option-image__input {
+      display: none;
+    }
+    .option-image__button {
+      padding: 15px 40px;
+      border-radius: 5px;
+      border: 1px solid #352f6e;
+      color: #352f6e;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        transition: 0.3s;
+        font-weight: 700;
+      }
+    }
+  }
+}
