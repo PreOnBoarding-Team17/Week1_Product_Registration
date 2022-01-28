@@ -1,4 +1,4 @@
-const List = [
+const NAVIGATIONLIST = [
   {
     name: "기본 설정",
     className: "menu",
@@ -53,4 +53,4 @@ const List = [
   },
 ];
 
-export default List;
+export default NAVIGATIONLIST;
