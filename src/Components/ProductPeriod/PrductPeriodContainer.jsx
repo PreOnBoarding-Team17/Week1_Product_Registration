@@ -8,6 +8,10 @@ function PrductPeriodContainer({ name, period, dateType }) {
   const inputs = context.state;
   const onChange = context.setState;
 
+  const context2 = useContext(FormContext).datesData;
+  const dates = context2.state;
+  const onDatesChange = context2.setState;
+
   return (
     <div className="product-period-container__input">
       <div className="product-period-container__input--radio">
@@ -43,15 +47,15 @@ function PrductPeriodContainer({ name, period, dateType }) {
           <input
             type={dateType}
             name={`${name}DateFrom`}
-            value={inputs[`${name}DateFrom`]}
-            onChange={onChange}
+            value={dates[`${name}DateFrom`]}
+            onChange={onDatesChange}
           />
           <div className="date-middle">~</div>
           <input
             type={dateType}
             name={`${name}DateTo`}
-            value={inputs[`${name}DateTo`]}
-            onChange={onChange}
+            value={dates[`${name}DateTo`]}
+            onChange={onDatesChange}
           />
         </div>
       )}
