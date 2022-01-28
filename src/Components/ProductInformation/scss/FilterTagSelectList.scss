@@ -1,0 +1,27 @@
+.filter-tag__select-list {
+  .filter-tag__select-list__title {
+    margin-top: 1.5rem;
+    font-weight: 600;
+  }
+  .filter-tag__select-list__wrap {
+    display: flex;
+    .filter-tag__select-list__item {
+      display: flex;
+      align-items: center;
+      background-color: #e8f7d4;
+      margin: 0.5rem 0;
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      .filter-tag__select-list__btn {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        padding-left: 0.7rem;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+    }
+  }
+}
