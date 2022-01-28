@@ -34,6 +34,8 @@ function FormContentAPI({ children }) {
     productMainImages: [],
   });
 
+  const [option, setOption] = useState([]);
+
   const onChange = (e) => {
     let { value, name } = e.target;
     let copy = { ...inputs };
@@ -93,8 +95,6 @@ function FormContentAPI({ children }) {
     productName: "",
     productCode: (Math.random() * 1e12).toString(36).substring(0, 8),
     productComposition: "",
-    productthumbnail: [],
-    productMainImage: [],
     totalProduct: 0,
   });
 
@@ -131,11 +131,15 @@ function FormContentAPI({ children }) {
       state: infoData,
       setState: onChangeInfoData,
     },
+    optionData: {
+      state: option,
+      setState: setOption,
+    },
   };
 
   useEffect(() => {
     console.log(data);
-  }, [data]);
+  }, [inputs, option, infoData, images]);
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }

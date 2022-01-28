@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import "Components/ProductIntroImage/scss/ProductImageUploader.scss";
+import "Utils/ImageUploader/scss/ImageUploader.scss";
 
-const ProductImageUploader = ({ name, files, onChange, isSingular }) => {
+const ImageUploader = ({ name, files, onChange, isSingular }) => {
   const inputRef = useRef(null);
 
   const handleClick = () => {
@@ -75,4 +75,4 @@ const ProductImageUploader = ({ name, files, onChange, isSingular }) => {
   );
 };
 
-export default ProductImageUploader;
+export default ImageUploader;
