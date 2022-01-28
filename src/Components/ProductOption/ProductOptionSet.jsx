@@ -16,7 +16,7 @@ export default function ProductOptionSet({ optionSet, onClick }) {
               <DeleteButton onClick={onClick} />
             </div>
             <div className="option-set__wrapper">
-              <ProductOptionImage />
+              <ProductOptionImage number={element} />
               <ProductOptionList
                 optionList={optionList}
                 onClick={() => handleDeleteOption(setOptionList)}

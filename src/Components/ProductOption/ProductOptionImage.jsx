@@ -1,19 +1,19 @@
 import React, { useState, useRef } from "react";
 import "Components/ProductOption/scss/ProductOptionImage.scss";
 
-export default function ProductOptionImage() {
-  const [image, setImage] = useState("");
+export default function ProductOptionImage({ number }) {
+  const [image, setImage] = useState([]);
   const inputRef = useRef(null);
-
+  console.log(image);
   const handleAddImage = (event) => {
     if (event.target.files) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        const previewImage = document.getElementById("preview-image");
+        const previewImage = document.getElementById(`preview-image${number}`);
         previewImage.src = event.target.result;
       };
       reader.readAsDataURL(event.target.files[0]);
-      setImage(event.target.files[0].name);
+      setImage((image) => [...image, event.target.files[0].name]);
     }
   };
 
@@ -27,7 +27,7 @@ export default function ProductOptionImage() {
       {image.length !== 0 ? (
         <img
           className="option-image__preview-image"
-          id="preview-image"
+          id={`preview-image${number}`}
           src=""
           alt="프리뷰 이미지"
         />
