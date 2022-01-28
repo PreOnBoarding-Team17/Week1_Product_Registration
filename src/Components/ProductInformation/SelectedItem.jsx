@@ -3,7 +3,10 @@ import { CATEGORY_LIST } from "Utils/Constants/CategoryList";
 
 function SelectedItem({ item, index, selected, setSelected }) {
   const removeSelectedItem = () => {
-    setSelected(selected.filter((removeitem) => removeitem !== item));
+    setSelected(
+      "category",
+      selected.filter((removeitem) => removeitem !== item)
+    );
   };
 
   return (

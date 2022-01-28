@@ -4,9 +4,9 @@ import FilterTagSearchResult from "./FilterTagSearchResult";
 import { TAG_LIST } from "Utils/Constants/TagList";
 import "Components/ProductInformation/scss/ProductFilterTag.scss";
 
-function ProductFilterTag() {
+function ProductFilterTag({ filterTag, setFilterTag }) {
   const [toggleSearch, setToggleSearch] = useState(false);
-  const [filterTag, setFilterTag] = useState([]);
+  // const [filterTag, setFilterTag] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
