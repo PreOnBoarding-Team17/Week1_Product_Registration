@@ -26,11 +26,6 @@ function FormContentAPI({ children }) {
     mileage: "true",
     thanks: "false",
   });
-<<<<<<< HEAD
-  //state는 예시 입니다.
-  const [state, setState] = useState("state");
-  const [option, setOption] = useState([]);
-=======
 
   const [images, setImages] = useState({
     productIntroImages: [],
@@ -38,7 +33,8 @@ function FormContentAPI({ children }) {
     productThumnailImage: [],
     productMainImages: [],
   });
->>>>>>> feb2f87ea7f8005720f6ee9eb44f9a5d55e7d126
+
+  const [option, setOption] = useState([]);
 
   const onChange = (e) => {
     let { value, name } = e.target;
@@ -143,15 +139,7 @@ function FormContentAPI({ children }) {
 
   useEffect(() => {
     console.log(data);
-<<<<<<< HEAD
-<<<<<<< HEAD
-  }, [inputs, option]);
-=======
-  }, [data]);
->>>>>>> feb2f87ea7f8005720f6ee9eb44f9a5d55e7d126
-=======
-  }, [inputs, infoData, images]);
->>>>>>> fd0eda1e8522251f6b2021f4f4e5248677fa14c2
+  }, [inputs, option, infoData, images]);
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }
