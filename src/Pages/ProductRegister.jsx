@@ -10,7 +10,7 @@ import ProductShippingSetting from "Components/ProductShippingSetting";
 
 function ProductRegister() {
   return (
-    <div style={{ paddingLeft: "200px" }}>
+    <form style={{ paddingLeft: "200px" }}>
       <Header />
       <ProductPeriod />
       <ProductInformation />
@@ -19,7 +19,7 @@ function ProductRegister() {
       <ProductRecommendImage />
       <ProductNotice />
       <ProductShippingSetting />
-    </div>
+    </form>
   );
 }
 

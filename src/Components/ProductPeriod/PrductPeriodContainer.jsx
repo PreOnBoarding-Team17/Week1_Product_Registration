@@ -4,7 +4,9 @@ import { FormContext } from "FormContextAPI/FormContextAPI";
 import "Components/ProductPeriod/scss/PrductPeriodContainer.scss";
 
 function PrductPeriodContainer({ name, period, dateType }) {
-  const { inputs, onChange } = useContext(FormContext);
+  const context = useContext(FormContext).inputsData;
+  const inputs = context.state;
+  const onChange = context.setState;
 
   return (
     <div className="product-period-container__input">
@@ -36,21 +38,23 @@ function PrductPeriodContainer({ name, period, dateType }) {
           </label>
         ))}
       </div>
-      <div className="product-period-container__input--date">
-        <input
-          type={dateType}
-          name={`${name}DateFrom`}
-          value={inputs[`${name}DateFrom`]}
-          onChange={onChange}
-        />
-        <div className="date-middle">~</div>
-        <input
-          type={dateType}
-          name={`${name}DateTo`}
-          value={inputs[`${name}DateTo`]}
-          onChange={onChange}
-        />
-      </div>
+      {inputs[name] === "2" && (
+        <div className="product-period-container__input--date">
+          <input
+            type={dateType}
+            name={`${name}DateFrom`}
+            value={inputs[`${name}DateFrom`]}
+            onChange={onChange}
+          />
+          <div className="date-middle">~</div>
+          <input
+            type={dateType}
+            name={`${name}DateTo`}
+            value={inputs[`${name}DateTo`]}
+            onChange={onChange}
+          />
+        </div>
+      )}
     </div>
   );
 }
