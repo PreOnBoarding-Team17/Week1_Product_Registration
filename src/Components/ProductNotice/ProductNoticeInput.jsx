@@ -16,6 +16,7 @@ function ProductNoticeInput({ idx, idy, name, option }) {
   return (
     <div className="product-notice-input-container">
       {option[0]}
+
       <input
         name={name}
         value={productInfoNotice[idx][idy]}

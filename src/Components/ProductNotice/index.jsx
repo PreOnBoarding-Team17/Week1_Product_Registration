@@ -86,8 +86,8 @@ function ProductNotice() {
 
       <div className="product-notice">
         {inputsAdd.map((e, idx) => (
-          <>
-            <section key={idx} className="white-bg">
+          <div key={idx}>
+            <section className="white-bg">
               <div className="product-notice__title">
                 <div>정보고시{idx + 1}</div>
                 <button
@@ -153,7 +153,7 @@ function ProductNotice() {
                 </button>
               </div>
             </section>
-          </>
+          </div>
         ))}
         <div className="plus-info">
           <button
