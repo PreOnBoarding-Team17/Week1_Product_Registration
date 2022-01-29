@@ -55,7 +55,6 @@ export default function Header() {
       infoData["productComposition"] === "" ||
       infoData["totalProduct"] === 0
     ) {
-      console.log("info");
       return false;
     }
     return true;
@@ -65,7 +64,6 @@ export default function Header() {
     let flag = true;
     if (extraOption.length === 0) return false;
     extraOption.forEach((extra) => {
-      console.log(extra.price);
       if (extra.name === "" || !extra.price) {
         flag = false;
         return false;
@@ -105,7 +103,6 @@ export default function Header() {
         (option.optionContents.length !== 0 &&
           !optionContentsCheck(option.optionContents))
       ) {
-        console.log("option");
         flag = false;
         return false;
       }
@@ -213,7 +210,6 @@ export default function Header() {
   // inputs 최종 제출 하기전의 검사
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("hi", inputs.name);
     productPeriodCheck("productExposure");
     productPeriodCheck("productSales");
 
