@@ -34,6 +34,7 @@ function PrductPeriodContainer({ name, period, dateType }) {
                   name={name}
                   value={String(idx)}
                   onChange={onChange}
+                  checked={false}
                 />
               </>
             )}
