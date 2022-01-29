@@ -1,10 +1,12 @@
 import React from "react";
+import { TAG_LIST } from "Utils/Constants/TagList";
 
 function FilterTagSearchResult({
   filterTag,
   setFilterTag,
   setToggleSearch,
   searchResult,
+  setSearchResult,
   setSearchInput,
 }) {
   const addFilterTag = (e) => {
@@ -13,6 +15,7 @@ function FilterTagSearchResult({
     }
     setToggleSearch(false);
     setSearchInput("");
+    setSearchResult([...TAG_LIST]);
   };
 
   return (

@@ -51,6 +51,7 @@ function ProductFilterTag({ filterTag, setFilterTag }) {
       {toggleSearch && (
         <FilterTagSearchResult
           searchResult={searchResult}
+          setSearchResult={setSearchResult}
           filterTag={filterTag}
           setFilterTag={setFilterTag}
           setToggleSearch={setToggleSearch}
