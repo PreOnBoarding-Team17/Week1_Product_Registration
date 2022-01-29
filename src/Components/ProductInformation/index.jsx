@@ -19,7 +19,7 @@ function ProductInformation() {
 
   const optionContext = useContext(FormContext).optionData;
   const option = optionContext.state;
-  console.log(option);
+
   const handleTotal = () => {
     setTotal(0);
     option.length !== 0 &&
@@ -33,7 +33,6 @@ function ProductInformation() {
   useEffect(() => {
     handleTotal();
   }, [option]);
-  console.log(total);
 
   return (
     <section className="gray-box information__container">
