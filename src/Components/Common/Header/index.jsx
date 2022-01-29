@@ -12,6 +12,9 @@ export default function Header() {
   const context2 = useContext(FormContext).datesData;
   const dates = context2.state;
 
+  const context3 = useContext(FormContext).informationData;
+  const infoData = context3.state;
+
   let result = { ...useContext(FormContext) };
 
   // 1,2 번 노출, 제출 기간 설정 검사
@@ -39,6 +42,10 @@ export default function Header() {
     productPeriodCheck("productExposure");
     productPeriodCheck("productSales");
     // 2번 상품 총 재고 0인경우 미판매 추가
+
+    if (inputs["productSales"] === "2" && infoData["totalProduct"] === 0) {
+      result["dates"]["productSales"] = "1";
+    }
   };
 
   return (

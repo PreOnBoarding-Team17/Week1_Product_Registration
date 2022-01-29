@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 const FormContext = createContext();
 
@@ -36,6 +36,21 @@ function FormContentAPI({ children }) {
 
   const [option, setOption] = useState([]);
 
+  const [infoData, setInfoData] = useState({
+    category: [],
+    filterTag: [],
+    productName: "",
+    productCode: (Math.random() * 1e12).toString(36).substring(0, 8),
+    productComposition: "",
+    totalProduct: 0,
+  });
+
+  const [productInfoNotice, setProductInfoNotice] = useState([
+    ["", "", "", "", ""],
+  ]);
+
+  const [inputsAdd, setInputsAdd] = useState([[["", ""]]]);
+
   const onChange = (e) => {
     let { value, name } = e.target;
     let copy = { ...inputs };
@@ -52,7 +67,6 @@ function FormContentAPI({ children }) {
       const timeOrderFrom = Date.parse(dates[`orderTimeFrom`]);
       const timeOrderTo = Date.parse(dates[`orderTimeFrom`]);
       const dateShipping = Date.parse(value);
-      console.log(timeOrderFrom, timeOrderTo, dateShipping);
 
       if (!isNaN(copy["orderTimeFrom"]) || !isNaN(copy["orderTimeTo"])) {
         alert("주문시간 먼저 작성하세요");
@@ -62,7 +76,46 @@ function FormContentAPI({ children }) {
       ) {
         alert("주문시간 이후로 출고일을 지정해주세요.");
       }
+    } else if (
+      name == "orderTimeTo" &&
+      !isNaN(Date.parse(copy["orderTimeTo"]))
+    ) {
+      console.log(Date.parse(copy["orderTimeTo"]), Date.now());
+      if (Date.parse(copy["orderTimeTo"]) - Date.now() < 0) {
+        const temp = { ...toggles };
+        temp["reservedShipping"] = "false";
+        setToggles(temp);
+
+        alert("주문시간을 다시 확인하세요.");
+      }
     }
+    //else if (
+    //   (name == "productExposureDateFrom" || name == "productExposureDateTo") &&
+    //   !isNaN(Date.parse(copy["productExposureDateFrom"])) &&
+    //   !isNaN(Date.parse(copy["productExposureDateTo"]))
+    // ) {
+    //   console.log(Date.parse(copy["productExposureDateTo"]));
+    //   console.log(Date.parse(copy["productExposureDateFrom"]));
+    //   if (
+    //     Date.parse(copy["productExposureDateTo"]) -
+    //     Date.parse(copy["productExposureDateFrom"])
+    //   ) {
+    //     alert("유효하지 않은 날짜 범위 입니다.");
+    //   }
+    // } else if (
+    //   (name == "productSalesDateFrom" || name == "productSalesDateTo") &&
+    //   !isNaN(Date.parse(copy["productSalesDateFrom"])) &&
+    //   !isNaN(Date.parse(copy["productSalesDateTo"]))
+    // ) {
+    //   console.log(Date.parse(copy["productSalesDateFrom"]));
+    //   console.log(Date.parse(copy["productSalesDateTo"]));
+    //   if (
+    //     Date.parse(copy["productSalesDateFrom"]) -
+    //     Date.parse(copy["productSalesDateTo"])
+    //   ) {
+    //     alert("유효하지 않은 날짜 범위 입니다.");
+    //   }
+    // }
 
     copy[name] = value;
     setDates({ ...copy });
@@ -88,15 +141,6 @@ function FormContentAPI({ children }) {
 
     setToggles({ ...copy });
   };
-
-  const [infoData, setInfoData] = useState({
-    category: [],
-    filterTag: [],
-    productName: "",
-    productCode: (Math.random() * 1e12).toString(36).substring(0, 8),
-    productComposition: "",
-    totalProduct: 0,
-  });
 
   const onChangeInfoData = (name, newData) => {
     const copy = { ...infoData };
@@ -135,11 +179,15 @@ function FormContentAPI({ children }) {
       state: option,
       setState: setOption,
     },
+    productInfoNoticeData: {
+      state: productInfoNotice,
+      setState: setProductInfoNotice,
+    },
+    inputsAddData: {
+      state: inputsAdd,
+      setState: setInputsAdd,
+    },
   };
-
-  useEffect(() => {
-    console.log(data);
-  }, [inputs, option, infoData, images]);
 
   return <FormContext.Provider value={data}>{children}</FormContext.Provider>;
 }
