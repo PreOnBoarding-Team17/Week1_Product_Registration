@@ -65,17 +65,20 @@ function FormContentAPI({ children }) {
 
     if (name === "dawnShipping" || name === "normalShipping") {
       const timeOrderFrom = Date.parse(dates[`orderTimeFrom`]);
-      const timeOrderTo = Date.parse(dates[`orderTimeFrom`]);
+      const timeOrderTo = Date.parse(dates[`orderTimeTo`]);
       const dateShipping = Date.parse(value);
 
       if (!isNaN(copy["orderTimeFrom"]) || !isNaN(copy["orderTimeTo"])) {
         alert("주문시간 먼저 작성하세요");
       } else if (
-        dateShipping - timeOrderFrom < 0 ||
-        timeOrderTo - dateShipping < 0
+        timeOrderFrom - dateShipping > 0 ||
+        timeOrderTo - dateShipping > 0
       ) {
         copy[name] = "";
         alert("주문시간 이후로 출고일을 지정해주세요.");
+        setDates({ ...copy });
+      } else {
+        copy[name] = value;
         setDates({ ...copy });
       }
     } else if (

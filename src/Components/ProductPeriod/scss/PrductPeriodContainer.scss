@@ -34,6 +34,9 @@
       border: 1.5px solid #282828;
       margin-right: 12px;
     }
+    .product-period-element {
+      width: 20%;
+    }
     input[type="radio"]:checked + span {
       position: absolute;
       background: #352f6d;
