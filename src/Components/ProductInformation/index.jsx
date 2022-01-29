@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FormContext } from "FormContextAPI/FormContextAPI";
 import ProductCategory from "Components/ProductInformation/ProductCategory";
 import ProductFilterTag from "./ProductFilterTag";
@@ -8,6 +8,7 @@ import ImageUploader from "Utils/ImageUploader";
 import "Components/ProductInformation/scss/ProductInformation.scss";
 
 function ProductInformation() {
+  const [total, setTotal] = useState(0);
   const context = useContext(FormContext).informationData;
   const infoData = context.state;
   const onChangeInfoData = context.setState;
@@ -15,6 +16,24 @@ function ProductInformation() {
   const fileContext = useContext(FormContext).filesData;
   const inputs = fileContext.state;
   const onFileChange = fileContext.setState;
+
+  const optionContext = useContext(FormContext).optionData;
+  const option = optionContext.state;
+  console.log(option);
+  const handleTotal = () => {
+    setTotal(0);
+    option.length !== 0 &&
+      option.forEach((optionSet) => {
+        optionSet.optionContents.forEach((list) => {
+          setTotal(total + Number(list.optionList[2]));
+        });
+      });
+  };
+
+  useEffect(() => {
+    handleTotal();
+  }, [option]);
+  console.log(total);
 
   return (
     <section className="gray-box information__container">
@@ -84,7 +103,7 @@ function ProductInformation() {
       </div>
       <div className="menu">
         <div className="left-menu">상품 총 재고 *</div>
-        <div className="right-menu">{infoData["totalProduct"]}개</div>
+        <div className="right-menu">{total}개</div>
       </div>
     </section>
   );
