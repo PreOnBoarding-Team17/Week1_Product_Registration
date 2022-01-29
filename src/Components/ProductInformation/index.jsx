@@ -31,6 +31,7 @@ function ProductInformation() {
       });
 
     setTotal(newTotal);
+    onChangeInfoData("totalProduct", newTotal);
   };
 
   useEffect(() => {
