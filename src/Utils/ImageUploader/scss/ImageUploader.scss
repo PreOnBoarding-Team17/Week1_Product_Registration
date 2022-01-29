@@ -1,6 +1,5 @@
 .product-image-uploader {
   display: flex;
-  align-items: center;
   &__input {
     display: none;
   }
@@ -23,12 +22,7 @@
     &-box {
       display: flex;
       align-items: center;
-      justify-content: center;
       margin-bottom: 1vh;
-
-      &:last-child {
-        margin: 0;
-      }
 
       &__file {
         font-size: 15px;

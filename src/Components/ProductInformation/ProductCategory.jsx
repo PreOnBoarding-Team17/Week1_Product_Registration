@@ -1,5 +1,4 @@
 import React from "react";
-// import { FormContext } from "FormContextAPI/FormContextAPI";
 import { CATEGORY_LIST } from "Utils/Constants/CategoryList";
 import CategoryItem from "./CategoryItem";
 import SelectedItem from "./SelectedItem";
@@ -16,7 +15,7 @@ function ProductCategory({ value, onChange }) {
               index={index}
               selected={value}
               setSelected={onChange}
-              key={index}
+              key={category}
             />
           );
         })}
@@ -31,7 +30,7 @@ function ProductCategory({ value, onChange }) {
                   index={index}
                   selected={value}
                   setSelected={onChange}
-                  key={index}
+                  key={item}
                 />
               );
             })}

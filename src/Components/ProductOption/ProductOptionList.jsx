@@ -82,7 +82,7 @@ export default function ProductOptionList({
                     (parseInt(optionList[1]) / parseInt(optionList[0])) * 100
                   )
                 } %`
-              : ""}
+              : "할인율(%)"}
           </div>
           <div className="option-list__element">
             <input
