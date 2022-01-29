@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 const FormContext = createContext();
 
@@ -186,7 +186,7 @@ function FormContentAPI({ children }) {
         copy["shippingDate"] = "false";
         copy["pickUpVisit"] = "false";
       } else if (name === "shippingDate" || name === "pickUpVisit") {
-        copy["reservedShipping"] = "false";       
+        copy["reservedShipping"] = "false";
       }
     }
 
