@@ -11,6 +11,10 @@
       display: flex;
       align-items: center;
 
+      &__datetime-local {
+        margin: 0 16px;
+        min-width: 225px;
+      }
       &__datetime {
         margin: 0 16px;
       }

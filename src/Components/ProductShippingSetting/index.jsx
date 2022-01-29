@@ -53,10 +53,10 @@ function ProductShippingSetting() {
             {toggles["reservedShipping"] === "true" && (
               <div className="shipping-time">
                 <div className="shipping-time--detail">
-                  주문 시간
+                  <span>주문 시간</span>
                   <input
                     type="datetime-local"
-                    className="shipping-time--detail__datetime"
+                    className="shipping-time--detail__datetime-local"
                     name="orderTimeFrom"
                     value={dates["orderTimeFrom"]}
                     onChange={onDatesChange}
@@ -64,7 +64,7 @@ function ProductShippingSetting() {
                   ~
                   <input
                     type="datetime-local"
-                    className="shipping-time--detail__datetime"
+                    className="shipping-time--detail__datetime-local"
                     name="orderTimeTo"
                     value={dates["orderTimeTo"]}
                     onChange={onDatesChange}
