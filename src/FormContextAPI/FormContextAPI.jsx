@@ -100,7 +100,6 @@ function FormContentAPI({ children }) {
     ) {
       if (Date.parse(copy["orderTimeFrom"]) - Date.parse(value) > 0) {
         copy["orderTimeTo"] = copy["orderTimeFrom"] = "";
-        console.log(copy);
         alert("주문시간을 다시 확인하세요.");
 
         setDates({ ...copy });
@@ -187,8 +186,7 @@ function FormContentAPI({ children }) {
         copy["shippingDate"] = "false";
         copy["pickUpVisit"] = "false";
       } else if (name === "shippingDate" || name === "pickUpVisit") {
-        copy["reservedShipping"] = "false";
-        console.log(copy);
+        copy["reservedShipping"] = "false";       
       }
     }
 
@@ -206,20 +204,6 @@ function FormContentAPI({ children }) {
 
     setImages({ ...images, [name]: value });
   };
-
-  useEffect(() => {
-    console.log(
-      dates.productExposureDateFrom,
-      dates.productExposureDateTo,
-      dates.productSalesDateFrom,
-      dates.productSalesDateTo,
-      dates.orderTimeFrom,
-      dates.orderTimeTo,
-      dates.dawnShipping,
-      dates.normalShipping,
-      dates
-    );
-  }, [dates]);
 
   const data = {
     inputsData: {
