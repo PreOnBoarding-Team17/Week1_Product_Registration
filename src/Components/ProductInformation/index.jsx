@@ -22,12 +22,16 @@ function ProductInformation() {
 
   const handleTotal = () => {
     setTotal(0);
+    let newTotal = 0;
     option.length !== 0 &&
       option.forEach((optionSet) => {
         optionSet.optionContents.forEach((list) => {
-          setTotal(total + Number(list.optionList[2]));
+          newTotal += Number(list.optionList[2]);
         });
       });
+
+    setTotal(newTotal);
+    onChangeInfoData("totalProduct", newTotal);
   };
 
   useEffect(() => {
@@ -47,7 +51,7 @@ function ProductInformation() {
         </div>
       </div>
       <div className="menu">
-        <div className="left-menu">필터 태그</div>
+        <div className="left-menu alignItems_center">필터 태그</div>
         <div className="right-menu">
           <ProductFilterTag
             filterTag={infoData["filterTag"]}
@@ -56,14 +60,14 @@ function ProductInformation() {
         </div>
       </div>
       <div className="menu">
-        <div className="left-menu">상품명 *</div>
+        <div className="left-menu alignItems_center">상품명 *</div>
         <div className="name-menu">
           <ProductName
             value={infoData["productName"]}
             onChange={onChangeInfoData}
           />
         </div>
-        <div className="left-menu">상품 코드</div>
+        <div className="left-menu alignItems_center">상품 코드</div>
         <div className="name-menu">
           <span className="name-menu__unique-code">
             {infoData["productCode"]}
@@ -71,7 +75,7 @@ function ProductInformation() {
         </div>
       </div>
       <div className="menu">
-        <div className="left-menu">상품 구성 소개 정보 *</div>
+        <div className="left-menu alignItems_center">상품 구성 소개 정보 *</div>
         <div className="right-menu">
           <ProductCompositionInfo
             value={infoData["productComposition"]}
@@ -80,7 +84,7 @@ function ProductInformation() {
         </div>
       </div>
       <div className="menu">
-        <div className="left-menu">상품 썸네일</div>
+        <div className="left-menu alignItems_center">상품 썸네일</div>
         <div className="right-menu">
           <ImageUploader
             name="productThumnailImage"
@@ -91,7 +95,7 @@ function ProductInformation() {
         </div>
       </div>
       <div className="menu">
-        <div className="left-menu">상품 대표 이미지</div>
+        <div className="left-menu alignItems_center">상품 대표 이미지</div>
         <div className="right-menu">
           <ImageUploader
             name="productMainImages"

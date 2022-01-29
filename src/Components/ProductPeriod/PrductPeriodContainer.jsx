@@ -16,31 +16,33 @@ function PrductPeriodContainer({ name, period, dateType }) {
     <div className="product-period-container__input">
       <div className="product-period-container__input--radio">
         {period.map((x, idx) => (
-          <label key={idx}>
-            {Number(inputs[name]) === idx ? (
-              <>
-                <input
-                  type="radio"
-                  name={name}
-                  value={String(idx)}
-                  onChange={onChange}
-                  checked
-                />
-              </>
-            ) : (
-              <>
-                <input
-                  type="radio"
-                  name={name}
-                  value={String(idx)}
-                  onChange={onChange}
-                  checked={false}
-                />
-              </>
-            )}
-            <span></span>
-            {x}
-          </label>
+          <div className="product-period-element" key={idx}>
+            <label>
+              {Number(inputs[name]) === idx ? (
+                <>
+                  <input
+                    type="radio"
+                    name={name}
+                    value={String(idx)}
+                    onChange={onChange}
+                    checked
+                  />
+                </>
+              ) : (
+                <>
+                  <input
+                    type="radio"
+                    name={name}
+                    value={String(idx)}
+                    onChange={onChange}
+                    checked={false}
+                  />
+                </>
+              )}
+              <span></span>
+              {x}
+            </label>
+          </div>
         ))}
       </div>
       {inputs[name] === "2" && (
