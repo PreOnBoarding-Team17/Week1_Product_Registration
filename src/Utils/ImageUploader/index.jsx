@@ -22,7 +22,7 @@ const ImageUploader = ({ name, files, onChange, isSingular }) => {
       return;
     }
 
-    onChange(e, [e.target.files[0], ...files]);
+    onChange(e, [...files, e.target.files[0]]);
   };
 
   const handleDelete = (e) => {
