@@ -7,7 +7,7 @@ import "Components/ProductInformation/scss/ProductFilterTag.scss";
 function ProductFilterTag({ filterTag, setFilterTag }) {
   const [toggleSearch, setToggleSearch] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
+  const [searchResult, setSearchResult] = useState(TAG_LIST);
 
   const onChangeFilterInput = (e) => {
     const newInput = e.target.value;
@@ -54,7 +54,6 @@ function ProductFilterTag({ filterTag, setFilterTag }) {
           filterTag={filterTag}
           setFilterTag={setFilterTag}
           setToggleSearch={setToggleSearch}
-          inputLength={searchInput.length}
           setSearchInput={setSearchInput}
         />
       )}
