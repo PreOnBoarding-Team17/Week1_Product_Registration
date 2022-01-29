@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const FormContext = createContext();
 
@@ -72,53 +72,106 @@ function FormContentAPI({ children }) {
         alert("주문시간 먼저 작성하세요");
       } else if (
         dateShipping - timeOrderFrom < 0 ||
-        timeOrderTo - timeOrderTo < 0
+        timeOrderTo - dateShipping < 0
       ) {
+        copy[name] = "";
         alert("주문시간 이후로 출고일을 지정해주세요.");
+        setDates({ ...copy });
       }
     } else if (
-      name == "orderTimeTo" &&
-      !isNaN(Date.parse(copy["orderTimeTo"]))
+      name === "orderTimeFrom" &&
+      !isNaN(Date.parse(copy["orderTimeTo"])) &&
+      !isNaN(Date.parse(value))
     ) {
-      console.log(Date.parse(copy["orderTimeTo"]), Date.now());
-      if (Date.parse(copy["orderTimeTo"]) - Date.now() < 0) {
-        const temp = { ...toggles };
-        temp["reservedShipping"] = "false";
-        setToggles(temp);
-
+      if (Date.parse(value) - Date.parse(copy["orderTimeTo"]) > 0) {
         alert("주문시간을 다시 확인하세요.");
-      }
-    }
-    //else if (
-    //   (name == "productExposureDateFrom" || name == "productExposureDateTo") &&
-    //   !isNaN(Date.parse(copy["productExposureDateFrom"])) &&
-    //   !isNaN(Date.parse(copy["productExposureDateTo"]))
-    // ) {
-    //   console.log(Date.parse(copy["productExposureDateTo"]));
-    //   console.log(Date.parse(copy["productExposureDateFrom"]));
-    //   if (
-    //     Date.parse(copy["productExposureDateTo"]) -
-    //     Date.parse(copy["productExposureDateFrom"])
-    //   ) {
-    //     alert("유효하지 않은 날짜 범위 입니다.");
-    //   }
-    // } else if (
-    //   (name == "productSalesDateFrom" || name == "productSalesDateTo") &&
-    //   !isNaN(Date.parse(copy["productSalesDateFrom"])) &&
-    //   !isNaN(Date.parse(copy["productSalesDateTo"]))
-    // ) {
-    //   console.log(Date.parse(copy["productSalesDateFrom"]));
-    //   console.log(Date.parse(copy["productSalesDateTo"]));
-    //   if (
-    //     Date.parse(copy["productSalesDateFrom"]) -
-    //     Date.parse(copy["productSalesDateTo"])
-    //   ) {
-    //     alert("유효하지 않은 날짜 범위 입니다.");
-    //   }
-    // }
 
-    copy[name] = value;
-    setDates({ ...copy });
+        copy["orderTimeFrom"] = "";
+        copy["orderTimeTo"] = "";
+        setDates({ ...copy });
+      } else {
+        copy[name] = value;
+        setDates({ ...copy });
+      }
+    } else if (
+      name === "orderTimeTo" &&
+      !isNaN(Date.parse(copy["orderTimeFrom"])) &&
+      !isNaN(Date.parse(value))
+    ) {
+      if (Date.parse(copy["orderTimeFrom"]) - Date.parse(value) > 0) {
+        copy["orderTimeTo"] = copy["orderTimeFrom"] = "";
+        console.log(copy);
+        alert("주문시간을 다시 확인하세요.");
+
+        setDates({ ...copy });
+      } else {
+        copy[name] = value;
+        setDates({ ...copy });
+      }
+    } else if (
+      name === "productExposureDateFrom" &&
+      !isNaN(Date.parse(copy["productExposureDateTo"])) &&
+      !isNaN(Date.parse(value))
+    ) {
+      if (Date.parse(value) - Date.parse(copy["productExposureDateTo"]) > 0) {
+        alert("유효하지 않은 날짜 범위 입니다.");
+
+        copy["productExposureDateFrom"] = "";
+        copy["productExposureDateTo"] = "";
+        setDates({ ...copy });
+      } else {
+        copy[name] = value;
+        setDates({ ...copy });
+      }
+    } else if (
+      name === "productExposureDateTo" &&
+      !isNaN(Date.parse(copy["productExposureDateFrom"])) &&
+      !isNaN(Date.parse(value))
+    ) {
+      if (Date.parse(copy["productExposureDateFrom"]) - Date.parse(value) > 0) {
+        alert("유효하지 않은 날짜 범위 입니다.");
+
+        copy["productExposureDateFrom"] = "";
+        copy["productExposureDateTo"] = "";
+        setDates({ ...copy });
+      } else {
+        copy[name] = value;
+        setDates({ ...copy });
+      }
+    } else if (
+      name === "productSalesDateFrom" &&
+      !isNaN(Date.parse(copy["productSalesDateTo"])) &&
+      !isNaN(Date.parse(value))
+    ) {
+      if (Date.parse(value) - Date.parse(copy["productSalesDateTo"]) > 0) {
+        alert("유효하지 않은 날짜 범위 입니다.");
+
+        copy["productSalesDateFrom"] = "";
+        copy["productSalesDateTo"] = "";
+        setDates({ ...copy });
+      } else {
+        copy[name] = value;
+        setDates({ ...copy });
+      }
+    } else if (
+      name === "productSalesDateTo" &&
+      !isNaN(Date.parse(copy["productSalesDateFrom"])) &&
+      !isNaN(Date.parse(value))
+    ) {
+      if (Date.parse(copy["productSalesDateFrom"]) - Date.parse(value) > 0) {
+        alert("유효하지 않은 날짜 범위 입니다.");
+        copy["productSalesDateFrom"] = "";
+        copy["productSalesDateTo"] = "";
+
+        setDates({ ...copy });
+      } else {
+        copy[name] = value;
+        setDates({ ...copy });
+      }
+    } else {
+      copy[name] = value;
+      setDates({ ...copy });
+    }
   };
 
   const onToggle = (e) => {
@@ -153,6 +206,20 @@ function FormContentAPI({ children }) {
 
     setImages({ ...images, [name]: value });
   };
+
+  useEffect(() => {
+    console.log(
+      dates.productExposureDateFrom,
+      dates.productExposureDateTo,
+      dates.productSalesDateFrom,
+      dates.productSalesDateTo,
+      dates.orderTimeFrom,
+      dates.orderTimeTo,
+      dates.dawnShipping,
+      dates.normalShipping,
+      dates
+    );
+  }, [dates]);
 
   const data = {
     inputsData: {
