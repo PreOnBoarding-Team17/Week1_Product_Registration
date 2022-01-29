@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { FormContext } from "FormContextAPI/FormContextAPI";
-// import { PrintAll } from "Components/Common/Header/PrintAll";
 import { resultForm } from "Utils/Constants/ResultForm";
 
 import "Components/Common/Header/scss/Header.scss";
